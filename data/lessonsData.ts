@@ -18,14 +18,17 @@ export const lessons = {
     System.out.println("Hello, World!");
   }
 }`,
+            icon: "https://cdn-icons-png.flaticon.com/512/226/226777.png", // Java icon
           },
           {
             name: "Python",
             code: `print("Hello, World!")`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5600/5600917.png", // Python icon
           },
           {
             name: "JavaScript",
             code: `console.log("Hello, World!");`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png", // JavaScript icon
           },
         ],
       },
@@ -54,6 +57,7 @@ int main() {
   }
   return 0;
 }`,
+            icon: "https://cdn-icons-png.flaticon.com/512/919/919831.png", // C icon
           },
           {
             name: "Python",
@@ -62,6 +66,7 @@ if x > 5:
     print("x is greater than 5")
 else:
     print("x is less than or equal to 5")`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5600/5600917.png", // Python icon
           },
           {
             name: "JavaScript",
@@ -71,6 +76,7 @@ if (x > 5) {
 } else {
   console.log("x is less than or equal to 5");
 }`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png", // JavaScript icon
           },
         ],
       },
@@ -98,6 +104,7 @@ int main() {
   greet();
   return 0;
 }`,
+            icon: "https://cdn-icons-png.flaticon.com/512/919/919831.png", // C icon
           },
           {
             name: "Python",
@@ -105,6 +112,7 @@ int main() {
     print("Hello, World!")
 
 greet()`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5600/5600917.png", // Python icon
           },
           {
             name: "JavaScript",
@@ -113,6 +121,7 @@ greet()`,
 }
 
 greet();`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png", // JavaScript icon
           },
         ],
       },
@@ -131,11 +140,13 @@ greet();`,
             name: "JavaScript",
             code: `let numbers = [1, 2, 3, 4];
 console.log(numbers);`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5968/5968292.png", // JavaScript icon
           },
           {
             name: "Python",
             code: `numbers = [1, 2, 3, 4]
 print(numbers)`,
+            icon: "https://cdn-icons-png.flaticon.com/512/5600/5600917.png", // Python icon
           },
         ],
       },

@@ -2,18 +2,18 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
+import type { Manifest } from "$fresh/server.ts";
+import * as $lessons_middleware from "./routes/lessons/_middleware.ts";
+import * as $CodeLanguageSelector from "./islands/CodeLanguageSelector.tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $index from "./routes/index.tsx";
 import * as $lessons_lesson_ from "./routes/lessons/[lesson].tsx";
-import * as $lessons_middleware from "./routes/lessons/_middleware.ts";
 import * as $lessons_secret from "./routes/lessons/secret.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $logout from "./routes/logout.tsx";
 import * as $signup from "./routes/signup.tsx";
-
-import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
@@ -28,7 +28,9 @@ const manifest = {
     "./routes/logout.tsx": $logout,
     "./routes/signup.tsx": $signup,
   },
-  islands: {},
+  islands: {
+    "./islands/CodeLanguageSelector.tsx": $CodeLanguageSelector,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

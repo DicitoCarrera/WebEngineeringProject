@@ -1,9 +1,9 @@
 // routes/lessons/[lesson].tsx
 import { Head } from "$fresh/runtime.ts";
 import { PageProps } from "$fresh/server.ts";
-import CodeSnippetCard from "../../components/CodeSnippetCard.tsx";
 import Layout from "../../components/Layout.tsx";
 import { lessons } from "../../data/lessonsData.ts";
+import CodeLanguageSelector from "../../islands/CodeLanguageSelector.tsx";
 
 export default function LessonPage({ params }: PageProps) {
   const lesson = lessons[params.lesson];
@@ -26,15 +26,20 @@ export default function LessonPage({ params }: PageProps) {
         <p class="text-lg mb-6">{lesson.description}</p>
         <p class="text-lg mb-6">{lesson.explanation}</p>
 
+        {/* Render each code example dynamically */}
         {lesson.codeExamples.map((example, index) => (
-          <CodeSnippetCard
-            key={index}
-            title={example.title}
-            languages={example.languages}
-          />
+          <div key={index} class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">{example.title}</h2>
+            <CodeLanguageSelector
+              codeSamples={example.languages.map((lang) => ({
+                language: lang.name.toLowerCase(),
+                code: lang.code,
+                icon: lang.icon, // Using the icon from data
+              }))}
+            />
+          </div>
         ))}
       </div>
     </Layout>
-
   );
 }
