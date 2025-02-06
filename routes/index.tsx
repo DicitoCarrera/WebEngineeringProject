@@ -1,6 +1,7 @@
 // pages/index.tsx
 import Layout from "../components/Layout.tsx";
 import LessonCard from "../components/LessonCard.tsx";
+import CodePlayground from "../islands/CodePlayground.tsx";
 
 export default function Home() {
   return (
@@ -37,8 +38,31 @@ export default function Home() {
             link="/lessons/functions"
             imageUrl="https://via.placeholder.com/400x200"
           />
+
+        <LessonCard
+          title="Arrays"
+          description="Explore arrays, which are used to store collections of data in multiple languages."
+          link="/lessons/arrays"
+          imageUrl="https://via.placeholder.com/400x200"
+        />
+
+        <LessonCard
+          title="Classes and Objects"
+          description="Learn about object-oriented programming through classes and objects."
+          link="/lessons/classes-objects"
+          imageUrl="https://via.placeholder.com/400x200"
+          />
+
         </div>
+
+
       </div>
+
+
+      <div>
+        <CodePlayground />
+      </div>
+
 
 
     </Layout>

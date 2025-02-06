@@ -1,5 +1,5 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { State } from "../_middleware.ts";
+import { State } from "../routes/_middleware.ts";
 
 export function handler(_req: Request, ctx: MiddlewareHandlerContext<State>) {
   if (!ctx.state.token) {
