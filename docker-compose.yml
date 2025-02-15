@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # MongoDB Service
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017" # Expose MongoDB on port 27017
+    volumes:
+      - mongodb_data:/data/db # Persist data in a named volume
+    networks:
+      - backend_network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root # MongoDB root username
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword # MongoDB root password
+
+  # Backend Service
+  backend:
+    build:
+      context: ./backend # Path to the backend directory
+    container_name: backend
+    ports:
+      - "5000:5000" # Expose your backend app on port 5000
+    networks:
+      - backend_network
+    environment:
+      MONGO_URI: mongodb://root:rootpassword@mongodb:27017 # MongoDB URI for the backend to connect
+      JWT_SECRET: your_jwt_secret # JWT Secret for your app
+    depends_on:
+      - mongodb # Make sure MongoDB is up before starting the backend
+
+networks:
+  backend_network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
