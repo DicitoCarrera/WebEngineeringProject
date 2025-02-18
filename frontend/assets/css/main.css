@@ -3623,3 +3623,53 @@ input, select, textarea {
 		.login-button:hover {
 			background-color: #0056b3;
 		}
+		/* Dropdown Menu */
+		.dropdown {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+			min-width: 160px;
+		}
+
+		.links ul li:hover .dropdown {
+			display: block;
+		}
+
+		.dropdown li {
+			padding: 10px;
+			display: flex;
+    		justify-content: center;
+		}
+
+		.dropdown a {
+			display: block;
+			color: #333;
+			text-decoration: none;
+		}
+		.wrapper-lessons {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2em;
+		  }.wrapper-lessons.mini-post {
+			width: calc(50% - 2em); 
+			margin: 0; 
+		  }
+		  
+		  @media screen and (max-width: 736px) {
+		  .wrapper-lessons.mini-post {
+			  width: 100%; 
+			}
+		  }
+		#footer {
+			text-align: center; 
+		}
+		#footer .icons {
+			margin-bottom: 1em; 
+			justify-content: center; 
+		}
+		#footer .icons li {
+			padding: 0 0.5em; 
+		}
