@@ -1,50 +1,55 @@
-import { useState } from 'preact/hooks';
-import { ChangeEvent } from 'react'; // Import ChangeEvent from react
-import Editor from '@monaco-editor/react';
-import axios from 'axios';
+import { useState } from "preact/hooks";
+import { ChangeEvent } from "react"; // Import ChangeEvent from react
+import Editor from "@monaco-editor/react";
+import axios from "axios";
 
 const Console = () => {
   // States for storing code, output, and selected language
-  const [code, setCode] = useState('');
-  const [output, setOutput] = useState('');
-  const [language, setLanguage] = useState('python'); // Default is Python
+  const [code, setCode] = useState("");
+  const [output, setOutput] = useState("");
+  const [language, setLanguage] = useState("python"); // Default is Python
 
   // Function to run the code using the Judge0 API
   const runCode = async () => {
-    const apiUrl = 'https://secure.judge0.com/submissions?base64_encoded=false&wait=true';
-    const apiKey = 'your_api_key_here'; // Get the API key at https://judge0.com/
+    const apiUrl =
+      "https://secure.judge0.com/submissions?base64_encoded=false&wait=true";
+    const apiKey = "your_api_key_here"; // Get the API key at https://judge0.com/
 
     try {
       const response = await axios.post(apiUrl, {
         source_code: code,
         language_id: getLanguageId(language),
-        stdin: ''
+        stdin: "",
       }, {
         headers: {
-          'Content-Type': 'application/json',
-          'X-RapidAPI-Key': apiKey
-        }
+          "Content-Type": "application/json",
+          "X-RapidAPI-Key": apiKey,
+        },
       });
-      setOutput(response.data.stdout || response.data.stderr || 'No output');
+      setOutput(response.data.stdout || response.data.stderr || "No output");
     } catch (error) {
-      console.error('Code execution error:', error);
-      setOutput('Code execution error.');
+      console.error("Code execution error:", error);
+      setOutput("Code execution error.");
     }
   };
 
   // Function to get the language ID for Judge0
   const getLanguageId = (lang: string) => {
     switch (lang) {
-      case 'python': return 71;
-      case 'java': return 62;
-      case 'c': return 50;
-      default: return 71;
+      case "python":
+        return 71;
+      case "java":
+        return 62;
+      case "c":
+        return 50;
+      default:
+        return 71;
     }
   };
 
   // Handler for changing the language
   const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    if (e.target && e.target.value) {  // Null check and value validation
+    if (e.target && e.target.value) { // Null check and value validation
       setLanguage(e.target.value);
     }
   };
@@ -71,7 +76,7 @@ const Console = () => {
         defaultLanguage={language}
         defaultValue="// Enter your code here"
         value={code}
-        onChange={(value) => setCode(value || '')}
+        onChange={(value) => setCode(value || "")}
         theme="vs-dark"
       />
       <button
