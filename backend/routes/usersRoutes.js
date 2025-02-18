@@ -25,7 +25,6 @@ router.post("/register", async (req, res) => {
     await usersCollection.insertOne({ username, password: hashedPassword });
 
     res.status(201).json({ message: "User registered successfully" });
-
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -40,7 +39,6 @@ router.post("/login", async (req, res) => {
   const usersCollection = db.collection("users");
 
   try {
-
     // Find user by username
     const user = await usersCollection.findOne({ username });
     if (!user) {
@@ -61,7 +59,6 @@ router.post("/login", async (req, res) => {
     );
 
     res.json({ message: "Login successful", token });
-
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).json({ message: "Internal server error" });

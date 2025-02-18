@@ -1,22 +1,25 @@
-import axios from 'axios';
-import { useState } from 'preact/hooks';
+import axios from "axios";
+import { useState } from "preact/hooks";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { username, password });
+      const response = await axios.post("http://localhost:5000/api/login", {
+        username,
+        password,
+      });
       alert(response.data.message);
       // Store the token in localStorage or sessionStorage
-      localStorage.setItem('authToken', response.data.token);
+      localStorage.setItem("authToken", response.data.token);
     } catch (error) {
-      setError(error.response?.data?.message || 'Login failed');
+      setError(error.response?.data?.message || "Login failed");
     }
   };
 
@@ -47,7 +50,9 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit" className="w-full bg-blue-500 text-white p-2">Login</button>
+        <button type="submit" className="w-full bg-blue-500 text-white p-2">
+          Login
+        </button>
 
         {error && <div className="text-red-500">{error}</div>}
       </form>
