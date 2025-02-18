@@ -27,9 +27,9 @@ connectDB()
 // Routes
 
 // Load user-related routes
-app.use("/api/users", userRoutes);
+app.use("/users", userRoutes);
 // Use lessons routes
-app.use("/api/lessons", lessonsRouter);
+app.use("/lessons", lessonsRouter);
 
 // Start the server
 app.listen(port, () => {
