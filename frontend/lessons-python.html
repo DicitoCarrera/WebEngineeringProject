@@ -8,33 +8,111 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
-  </head>
-  <body class="is-preload single">
+    <style>
+        .wrapper-lessons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .mini-post {
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            width: 300px;
+        }
+
+        .mini-post:hover {
+            transform: translateY(-10px);
+        }
+
+        .mini-post header {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .mini-post header h3 {
+            margin: 0 0 20px 0; /* Добавлен отступ снизу для заголовка */
+            font-size: 1.2em; /* Уменьшенный размер текста заголовков */
+        }
+
+        .mini-post header time {
+            display: block;
+            color: #888;
+        }
+
+        .mini-post .image {
+            display: block;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .mini-post .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .mini-post:hover .image img {
+            transform: scale(1.1);
+        }
+
+        #footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0; /* Футер начинается с левого края */
+            width: 100%;
+        }
+
+        #footer .icons a {
+            color: #fff;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        #footer .icons a:hover {
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body class="is-preload single">
+
     <div id="wrapper">
-      <header id="header">
-        <h1><a href="index.html">Learn Programming</a></h1>
-        <nav class="links">
-          <ul>
-            <li>
-              <a href="#">Courses</a>
-              <ul class="dropdown">
-                <li><a href="#">Python</a></li>
-                <li><a href="#">Java</a></li>
-                <li><a href="#">C</a></li>
-              </ul>
-            </li>
-            <li><a href="about.html">About us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-        <nav class="main">
-          <ul>
-            <li class="menu">
-              <a class="fa-bars" href="#menu">Menu</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
+
+        <header id="header">
+            <h1><a href="index.html">Learn Programming</a></h1>
+            <nav class="links">
+                <ul>
+                    <li>
+                        <a href="#">Courses</a> 
+                        <ul class="dropdown">
+                            <li><a href="#">Python</a></li>
+                            <li><a href="#">Java</a></li>
+                            <li><a href="#">C</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about-us.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <nav class="main">
+                <ul>
+                    <li class="menu">
+                        <a class="fa-bars" href="#menu">Menu</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
       <section id="menu">
         <section>
@@ -43,28 +121,28 @@
           </form>
         </section>
 
-        <section>
-          <ul class="links">
-            <li>
-              <a href="#">
-                <h3>My Account</h3>
-                <p>Manage your account settings and preferences</p>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <h3>Learning Progress</h3>
-                <p>Track your learning journey and achievements</p>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <h3>Resources</h3>
-                <p>Access study materials, guides, and documentation</p>
-              </a>
-            </li>
-          </ul>
-        </section>
+            <section>
+                <ul class="links">
+                    <li>
+                        <a href="#">
+                            <h3>My Account</h3>
+                            <p>Manage your account settings and preferences</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>Learning Progress</h3>
+                            <p>Track your learning journey and achievements</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resources.html">
+                            <h3>Resources</h3>
+                            <p>Access study materials, guides, and documentation</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
 
         <section>
           <ul class="actions stacked">
@@ -73,54 +151,33 @@
         </section>
       </section>
 
-      <div id="main" class="wrapper-lessons">
-        <article class="mini-post">
-          <header>
-            <h3>
-              <a href="single.html">Variables and Their Types in Python</a>
-            </h3>
-            <time class="published" datetime="2015-11-01"
-            >February 15, 2025</time>
-            <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a
-            >
-          </header>
-          <a href="single.html" class="image"><img
-              src="images/pic01.jpg"
-              alt=""
-            /></a>
-        </article>
+        <div id="main" class="wrapper-lessons">
 
-        <article class="mini-post">
-          <header>
-            <h3><a href="single.html">Introduction to Arrays in Java</a></h3>
-            <time class="published" datetime="2015-10-25"
-            >February 16, 2025</time>
-            <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a
-            >
-          </header>
-          <a href="single.html" class="image"><img
-              src="images/pic02.jpg"
-              alt=""
-            /></a>
-        </article>
+            <article class="mini-post">
+                <header>
+                    <h3><a href="single.html">Variables and Their Types in Python</a></h3>
+                    <time class="published" datetime="2025-02-15">February 15, 2025</time>
+                </header>
+                <a href="single.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
+            </article>
 
-        <article class="mini-post">
-          <header>
-            <h3>
-              <a href="single.html"
-              >Functions in C: Declaration and Invocation</a>
-            </h3>
-            <time class="published" datetime="2015-10-22"
-            >February 17, 2025</time>
-            <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a
-            >
-          </header>
-          <a href="single.html" class="image"><img
-              src="images/pic03.jpg"
-              alt=""
-            /></a>
-        </article>
-      </div>
+            <article class="mini-post">
+                <header>
+                    <h3><a href="single.html">Introduction to Arrays in Java</a></h3>
+                    <time class="published" datetime="2025-02-16">February 16, 2025</time>
+                </header>
+                <a href="single.html" class="image"><img src="images/pic02.jpg" alt="" /></a>
+            </article>
+
+            <article class="mini-post">
+                <header>
+                    <h3><a href="single.html">Functions in C: Declaration and Invocation</a></h3>
+                    <time class="published" datetime="2025-02-17">February 17, 2025</time>
+                </header>
+                <a href="single.html" class="image"><img src="images/pic03.jpg" alt="" /></a>
+            </article>
+
+        </div>
 
       <section id="footer">
         <div class="row aln-center">

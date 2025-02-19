@@ -3682,34 +3682,49 @@ body.is-menu-visible #menu {
   justify-content: center;
 }
 
-.dropdown a {
-  display: block;
-  color: #333;
-  text-decoration: none;
-}
-.wrapper-lessons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2em;
-}
-.wrapper-lessons.mini-post {
-  width: calc(50% - 2em);
-  margin: 0;
-}
-
-@media screen and (max-width: 736px) {
-  .wrapper-lessons.mini-post {
-    width: 100%;
-  }
-}
-#footer {
-  text-align: center;
-}
-#footer .icons {
-  margin-bottom: 1em;
-  justify-content: center;
-}
-#footer .icons li {
-  padding: 0 0.5em;
-}
+		.dropdown a {
+			display: block;
+			color: #333;
+			text-decoration: none;
+		}
+		.wrapper-lessons {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2em;
+		  }.wrapper-lessons.mini-post {
+			width: calc(50% - 2em); 
+			margin: 0; 
+		  }
+		  
+		  @media screen and (max-width: 736px) {
+		  .wrapper-lessons.mini-post {
+			  width: 100%; 
+			}
+		  }
+		#footer {
+			text-align: center; 
+		}
+		#footer .icons {
+			margin-bottom: 1em; 
+			justify-content: center; 
+		}
+		#footer .icons li {
+			padding: 0 0.5em; 
+		}
+		.full-width-image {
+			width: 100%;
+			overflow: hidden;
+		}
+		
+		.full-width-image img {
+			width: 100%;
+			height: auto;
+			max-height: 33.33vh; /* Adjust the height to be three times smaller */
+			display: block;
+		}
+		
+		.centered-text {
+			text-align: center;
+			margin-top: 20px;
+		}

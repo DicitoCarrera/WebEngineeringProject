@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Profile - Learn Programming</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #header {
+            /* Keep the header at the top */
+        }
+
+        #main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .post {
+            width: 80%;
+            max-width: 800px;
+        }
+
+        #sidebar {
+            display: none;
+        }
+
+        #menu {
+            /* Styles for the menu (if needed) */
+        }
+
+        .profile-info, .completed-lessons, .edit-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-info img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
+        .profile-info h2 {
+            margin-top: 10px;
+        }
+
+        .profile-info p {
+            margin-top: 5px;
+        }
+
+        .completed-lessons ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .completed-lessons li {
+            margin: 10px 0;
+        }
+
+        .edit-info form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .edit-info input[type="text"], .edit-info input[type="email"], .edit-info input[type="password"] {
+            width: 80%;
+            max-width: 400px;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .edit-info input[type="submit"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+
+    <div id="wrapper">
+
+        <header id="header">
+            <h1><a href="index.html">Learn Programming</a></h1>
+            <nav class="links">
+                <ul>
+                    <li><a href="lessons-python.html">Courses</a></li>
+                    <li><a href="about-us.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <nav class="main">
+                <ul>
+                    <li class="menu">
+                        <a class="fa-bars" href="#menu">Menu</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="menu">
+
+            <section>
+                <form class="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="Search" />
+                </form>
+            </section>
+
+            <section>
+                <ul class="links">
+                    <li>
+                        <a href="#">
+                            <h3>My Account</h3>
+                            <p>Manage your account settings and preferences</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>Learning Progress</h3>
+                            <p>Track your learning journey and achievements</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resources.html">
+                            <h3>Resources</h3>
+                            <p>Access study materials, guides, and documentation</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+        </section>
+
+        <div id="main">
+
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">Profile</a></h2>
+                    </div>
+                </header>
+
+                <section class="profile-info">
+                    <img src="images/avatar.jpg" alt="User Avatar" />
+                    <h2>John Doe</h2>
+                    <p>Email: john.doe@example.com</p>
+                    <p>Member since: January 1, 2020</p>
+                </section>
+
+                <section class="completed-lessons">
+                    <h3>Completed Lessons</h3>
+                    <ul>
+                        <li>Lesson 1: Introduction to Python</li>
+                        <li>Lesson 2: Variables and Data Types</li>
+                        <li>Lesson 3: Control Structures</li>
+                        <!-- Add more lessons as needed -->
+                    </ul>
+                </section>
+
+                <section class="edit-info">
+                    <h3>Edit Profile Information</h3>
+                    <form id="edit-profile-form" method="post" action="path/to/your/edit-profile-handler.php">
+                        <input type="text" name="name" placeholder="Name" value="John Doe" />
+                        <input type="email" name="email" placeholder="Email" value="john.doe@example.com" />
+                        <input type="password" name="password" placeholder="New Password" />
+                        <input type="submit" value="Save Changes" class="button primary" />
+                    </form>
+                </section>
+
+            </article>
+
+        </div>
+
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
