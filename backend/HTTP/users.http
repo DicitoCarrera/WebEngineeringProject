@@ -1,0 +1,74 @@
+POST http://localhost:5000/lessons
+Content-Type: application/json
+
+{
+  "variables": {
+    "title": "Variables and Data Types",
+    "description": "Learn how variables and data types are fundamental in every language.",
+    "explanation": "Variables store data that can be used and manipulated in a program. Data types specify the kind of data a variable holds, such as integers, strings, or floating-point numbers.",
+    "codeExamples": [
+      {
+        "title": "Hello World Example",
+        "languages": [
+          {
+            "name": "Java",
+            "code": "public class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello, World!\");\n  }\n}",
+            "icon": "https://cdn-icons-png.flaticon.com/512/226/226777.png"
+          },
+          {
+            "name": "Python",
+            "code": "print(\"Hello, World!\")",
+            "icon": "https://cdn-icons-png.flaticon.com/512/5600/5600917.png"
+          },
+          {
+            "name": "JavaScript",
+            "code": "console.log(\"Hello, World!\");",
+            "icon": "https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+GET http://localhost:5000/lessons
+
+GET http://localhost:5000/lessons/<lesson-id>
+
+PUT http://localhost:5000/lessons/<lesson-id>
+Content-Type: application/json
+
+{
+  "_id": {
+    "$oid": "67b48c746a70ac3276fdbf1c"
+  },
+  "variables": {
+    "title": "Variables and Data Types",
+    "description": "Learn how variables and data types are fundamental in every language.",
+    "explanation": "Variables store data that can be used and manipulated in a program. Data types specify the kind of data a variable holds, such as integers, strings, or floating-point numbers.",
+    "codeExamples": [
+      {
+        "title": "Hello World Example",
+        "languages": [
+          {
+            "name": "Java",
+            "code": "public class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello, World!\");\n  }\n}",
+            "icon": "https://cdn-icons-png.flaticon.com/512/226/226777.png"
+          },
+          {
+            "name": "Python",
+            "code": "print(\"Hello, World!\")",
+            "icon": "https://cdn-icons-png.flaticon.com/512/5600/5600917.png"
+          },
+          {
+            "name": "JavaScript",
+            "code": "console.log(\"Hello, World!\");",
+            "icon": "https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+DELETE http://localhost:5000/lessons/<lesson-id>
