@@ -74,7 +74,7 @@
             <!-- Actions -->
             <section>
                 <ul class="actions stacked">
-                    <li><a href="login.html" class="button large fit">Log In</a></li>
+                    <li><a href="login.html" id="login-button" class="button large fit">Log In</a></li>
                 </ul>
             </section>
 
@@ -193,6 +193,15 @@
     <script src="assets/js/main.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Проверка состояния авторизации
+            const isLoggedIn = localStorage.getItem('authToken') !== null;
+
+            const loginButton = document.getElementById('login-button');
+            if (isLoggedIn) {
+                loginButton.textContent = 'Profile';
+                loginButton.href = 'profile.html';
+            }
+
             fetch("http://localhost:3000/lessons")
                 .then(response => response.json())
                 .then(data => {

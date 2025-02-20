@@ -127,6 +127,7 @@
                 })
                 .then(result => {
                     if (result.message === "Login successful") {
+                        localStorage.setItem('authToken', result.authToken);
                         window.location.href = 'profile.html';
                     } else {
                         document.getElementById('error-message').textContent = result.message;

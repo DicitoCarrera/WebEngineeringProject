@@ -1,210 +1,118 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Single - Future Imperfect by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="single is-preload">
+    <head>
+        <title>Single - Future Imperfect by HTML5 UP</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/editor/editor.main.min.css" />
+    </head>
+    <body class="single is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        <!-- Wrapper -->
+        <div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Learn Programming</a></h1>
-						<nav class="links">
-							<ul>
-								<li>
-									<a href="#">Courses</a> 
-									<ul class="dropdown">
-										<li><a href="lessons-python.html">Python</a></li>
-										<li><a href="#">Java</a></li>
-										<li><a href="#">C</a></li>
-									</ul>
-								</li>
-								<li><a href="about-us.html">About us</a></li>
-								<li><a href="contact.html">Contact</a></li>
-							</ul>
-						</nav>
-						<nav class="main">
-							<ul>
-								<li class="search">
-									<a class="fa-search" href="#search">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="menu">
-									<a class="fa-bars" href="#menu">Menu</a>
-								</li>
-							</ul>
-						</nav>
-					</header>
+            <!-- Header -->
+            <header id="header">
+                <h1><a href="index.html">Learn Programming</a></h1>
+                <nav class="links">
+                    <ul>
+                        <li>
+                            <a href="#">Courses</a> 
+                            <ul class="dropdown">
+                                <li><a href="lessons-python.html">Python</a></li>
+                                <li><a href="#">Java</a></li>
+                                <li><a href="#">C</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about-us.html">About us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <nav class="main">
+                    <ul>
+                        <li class="search">
+                            <a class="fa-search" href="#search">Search</a>
+                            <form id="search" method="get" action="#">
+                                <input type="text" name="query" placeholder="Search" />
+                            </form>
+                        </li>
+                        <li class="menu">
+                            <a class="fa-bars" href="#menu">Menu</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
 
-      <!-- Menu -->
-      <section id="menu">
-        <!-- Search -->
-        <section>
-          <form class="search" method="get" action="#">
-            <input type="text" name="query" placeholder="Search" />
-          </form>
-        </section>
-
-						<!-- Links -->
-							<section>
-								<ul class="links">
-									<li>
-										<a href="#">
-											<h3>My Account</h3>
-											<p>Manage your account settings and preferences</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>Learning Progress</h3>
-											<p>Track your learning journey and achievements</p>
-										</a>
-									</li>
-									<li>
-										<a href="resources.html">
-											<h3>Resources</h3>
-											<p>Access study materials, guides, and documentation</p>
-										</a>
-									</li>
-								</ul>
-							</section>
-
-						<!-- Actions -->
-							<section>
-								<ul class="actions stacked">
-									<li><a href="login.html" class="button large fit">Log In</a></li>
-								</ul>
-							</section>
-
-					</section>
-
-      <!-- Main -->
-      <div id="main">
-        <!-- Post -->
-        <article class="post">
-          <header>
-            <div class="title">
-              <h2><a href="#">Variables and Their Types in Python</a></h2>
-              <p>
-                In this lesson, we will explore how to declare variables in
-                Python, understand different data types, and learn how to work
-                with them effectively to store and manipulate data.
-              </p>
+            <!-- Main -->
+            <div id="main">
+                <!-- Post -->
+                <article class="post">
+                    <header>
+                        <div class="title">
+                            <h2><a href="#">Variables and Their Types in Python</a></h2>
+                            <p>In this lesson, we will explore how to declare variables in Python, understand different data types, and learn how to work with them effectively to store and manipulate data.</p>
+                        </div>
+                        <div class="meta">
+                            <time class="published" datetime="2025-15-02">February 15, 2025</time>
+                            <a href="#" class="author"><span class="name">Anatolii Maslov</span><img src="images/avatar.jpg" alt="" /></a>
+                        </div>
+                    </header>
+                    <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+                    <p>In Python, variables are used to store data values. A variable is essentially a name that refers to a specific piece of data. You can assign values to variables using the assignment operator (<code>=</code>), and the type of data a variable holds can be inferred automatically by Python.</p>
+                    <p>Python has various built-in data types, including <strong>integers</strong> (whole numbers), <strong>floats</strong> (decimal numbers), <strong>strings</strong> (text), and <strong>booleans</strong> (True or False values). Each data type has specific characteristics that determine how they can be used and manipulated.</p>
+                    <p>One of Python's strengths is its dynamic typing system, meaning you don't need to explicitly declare the type of a variable when you create it. Python will automatically assign the appropriate type based on the value assigned. For example:</p>
+                    <pre><code>
+x = 10  # x is an integer
+y = 3.14  # y is a float
+name = "Alice"  # name is a string
+is_active = True  # is_active is a boolean
+                    </code></pre>
+                    <p>It’s important to note that variables in Python are case-sensitive, so <code>myVar</code> and <code>myvar</code> would be treated as different variables.</p>
+                    <p>Understanding variables and their types is fundamental in Python, as they allow you to store and manipulate data in a program effectively.</p>
+                    <div>
+                        <label for="language-selector">Select Language:</label>
+                        <select id="language-selector">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="csharp">C#</option>
+                            <option value="cpp">C++</option>
+                        </select>
+                    </div>
+                    <div id="editor-container" style="height: 400px; border: 1px solid #ccc"></div>
+                    <button id="run-code" class="bg-blue-500 text-white p-2 rounded mt-4">Run Code</button>
+                    <pre id="output" class="bg-gray-100 p-2 rounded mt-2"></pre>
+                    <footer>
+                        <ul class="stats">
+                            <li><a href="#">General</a></li>
+                            <li><a href="#" class="icon solid fa-heart">28</a></li>
+                            <li><a href="#" class="icon solid fa-comment">128</a></li>
+                        </ul>
+                    </footer>
+                </article>
             </div>
-            <div class="meta">
-              <time class="published" datetime="2025-15-02"
-              >February 15, 2025</time>
-              <a href="#" class="author"><span class="name"
-                >Anatolii Maslov</span><img src="images/avatar.jpg" alt="" /></a
-              >
-            </div>
-          </header>
-          <span class="image featured"><img
-              src="images/pic01.jpg"
-              alt=""
-            /></span>
-          <p>
-            In Python, variables are used to store data values. A variable is
-            essentially a name that refers to a specific piece of data. You can
-            assign values to variables using the assignment operator (<code
-            >=</code>), and the type of data a variable holds can be inferred
-            automatically by Python.
-          </p>
-          <p>
-            Python has various built-in data types, including <strong
-            >integers</strong> (whole numbers), <strong>floats</strong> (decimal
-            numbers), <strong>strings</strong> (text), and <strong
-            >booleans</strong> (True or False values). Each data type has
-            specific characteristics that determine how they can be used and
-            manipulated.
-          </p>
-          <p>
-            One of Python's strengths is its dynamic typing system, meaning you
-            don't need to explicitly declare the type of a variable when you
-            create it. Python will automatically assign the appropriate type
-            based on the value assigned. For example:
-          </p>
-          <pre
-          >
-<code>
-								  x = 10  # x is an integer
-								  y = 3.14  # y is a float
-								  name = "Alice"  # name is a string
-								  is_active = True  # is_active is a boolean
-								  </code></pre
-          >
-          <p>
-            It’s important to note that variables in Python are case-sensitive,
-            so <code>myVar</code> and <code>myvar</code> would be treated as
-            different variables.
-          </p>
-          <p>
-            Understanding variables and their types is fundamental in Python, as
-            they allow you to store and manipulate data in a program
-            effectively.
-          </p>
-          <div
-            id="editor-container"
-            style="height: 400px; border: 1px solid #ccc"
-          >
-          </div>
-          <button id="run-code" class="bg-blue-500 text-white p-2 rounded mt-4">
-            Run Code
-          </button>
-          <pre id="output" class="bg-gray-100 p-2 rounded mt-2"></pre>
-          <footer>
-            <ul class="stats">
-              <li><a href="#">General</a></li>
-              <li><a href="#" class="icon solid fa-heart">28</a></li>
-              <li><a href="#" class="icon solid fa-comment">128</a></li>
-            </ul>
-          </footer>
-        </article>
-      </div>
 
-      <!-- Footer -->
-      <section id="footer">
-        <ul class="icons">
-          <li>
-            <a href="#" class="icon brands fa-twitter"><span class="label"
-              >Twitter</span></a>
-          </li>
-          <li>
-            <a href="#" class="icon brands fa-facebook-f"><span class="label"
-              >Facebook</span></a>
-          </li>
-          <li>
-            <a href="#" class="icon brands fa-instagram"><span class="label"
-              >Instagram</span></a>
-          </li>
-          <li>
-            <a href="#" class="icon solid fa-rss"><span class="label"
-              >RSS</span></a>
-          </li>
-          <li>
-            <a href="#" class="icon solid fa-envelope"><span class="label"
-              >Email</span></a>
-          </li>
-        </ul>
-        <p class="copyright">&copy; Untitled.</p>
-      </section>
-    </div>
+            <!-- Footer -->
+            <section id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
+                    <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <p class="copyright">&copy; Untitled.</p>
+            </section>
+        </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <!-- Monaco Editor -->
-    <script type="module" src="assets/js/monacoSetup.js"></script>
-  </body>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/vs/loader.min.js"></script>
+        <script type="module" src="assets/js/monacoSetup.js"></script>
+    </body>
 </html>
