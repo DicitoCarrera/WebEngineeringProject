@@ -1,84 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Learning Programming - Login</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-      #wrapper {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      #header {
-        /* Keep the header at the top */
-      }
-
-      #main {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-      }
-
-      .post {
-        width: 50%;
-        max-width: 600px;
-      }
-
-      #sidebar {
-        display: none;
-      }
-
-      #menu {
-        /* Styles for the menu (if needed) */
-      }
-
-      /* Target the columns containing the input fields */
-      .col-6.col-12-xsmall {
-        width: 100%; /* Make them take full width of the parent */
-      }
-
-      /* Input fields styles */
-      input[type="text"],
-      input[type="password"] {
-        width: calc(100% - 20px); /* Adjust width to account for padding */
-        max-width: 100%; /* Ensure they don't exceed the parent width */
-        padding: 10px;
-        box-sizing: border-box;
-        font-size: 16px;
-      }
-
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .row {
-        display: contents;
-      }
-
-      .col-6,
-      .col-12 {
-        width: auto;
-      }
-
-      .actions {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-      }
-    </style>
-  </head>
-
-  <body class="is-preload">
+</head>
+<body class="is-preload">
     <div id="wrapper">
 
         <header id="header">
@@ -99,12 +27,12 @@
             </nav>
         </header>
 
-      <section id="menu">
-        <section>
-          <form class="search" method="get" action="#">
-            <input type="text" name="query" placeholder="Search" />
-          </form>
-        </section>
+        <section id="menu">
+            <section>
+                <form class="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="Search" />
+                </form>
+            </section>
 
             <section>
                 <ul class="links">
@@ -128,58 +56,44 @@
                     </li>
                 </ul>
             </section>
-
         </section>
 
-      <div id="main">
-        <article class="post">
-          <header>
-            <div class="title">
-              <h2><a href="#">Login</a></h2>
-            </div>
-          </header>
+        <div id="main">
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">Login</a></h2>
+                    </div>
+                </header>
 
-          <section>
-            <form method="post" action="#">
-              <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall">
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Username"
-                  />
-                </div>
-                <div class="col-6 col-12-xsmall">
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    placeholder="Password"
-                  />
-                </div>
-                <div class="col-12">
-                  <ul class="actions">
-                    <li>
-                      <input type="submit" value="Login" class="button large" />
-                    </li>
-                    <li>
-                      <input
-                        type="reset"
-                        value="Reset"
-                        class="button alt large"
-                      />
-                    </li>
-                    <li>
-                      <a href="register.html" class="button alt large">Register</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </form>
-          </section>
-        </article>
-      </div>
+                <section>
+                    <form id="login-form">
+                        <div class="row gtr-uniform">
+                            <div class="col-6 col-12-xsmall">
+                                <input type="text" name="username" id="username" placeholder="Username" />
+                            </div>
+                            <div class="col-6 col-12-xsmall">
+                                <input type="password" name="password" id="password" placeholder="Password" />
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions">
+                                    <li>
+                                        <input type="submit" value="Login" class="button large" />
+                                    </li>
+                                    <li>
+                                        <input type="reset" value="Reset" class="button alt large" />
+                                    </li>
+                                    <li>
+                                        <a href="register.html" class="button alt large">Register</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="error-message" style="color: red; display: none;"></div>
+                </section>
+            </article>
+        </div>
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -187,5 +101,45 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-  </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('login-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                const data = Object.fromEntries(formData.entries());
+    
+                fetch('/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            throw new Error('Wrong username or password. Please try again.');
+                        } else {
+                            throw new Error('An error occurred. Please try again later.');
+                        }
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    if (result.message === "Login successful") {
+                        window.location.href = 'profile.html';
+                    } else {
+                        document.getElementById('error-message').textContent = result.message;
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('error-message').textContent = error.message;
+                    document.getElementById('error-message').style.display = 'block';
+                });
+            });
+        });
+    </script>
+</body>
 </html>

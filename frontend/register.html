@@ -1,3 +1,4 @@
+Project/WebEngineeringProject/frontend/register.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,77 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-        #wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        #header {
-            /* Keep the header at the top */
-        }
-
-        #main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .post {
-            width: 50%;
-            max-width: 600px;
-        }
-
-        #sidebar {
-            display: none;
-        }
-
-        #menu {
-            /* Styles for the menu (if needed) */
-        }
-
-        /* Target the columns containing the input fields */
-        .col-6.col-12-xsmall {
-            width: 100%; /* Make them take full width of the parent */
-        }
-
-        /* Input fields styles */
-        input[type="text"],
-        input[type="password"],
-        input[type="email"] {
-            width: calc(100% - 20px); /* Adjust width to account for padding */
-            max-width: 100%; /* Ensure they don't exceed the parent width */
-            padding: 10px;
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .row {
-            display: contents;
-        }
-
-        .col-6,
-        .col-12 {
-            width: auto;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-    </style>
 </head>
-
 <body class="is-preload">
     <div id="wrapper">
 
@@ -137,7 +68,7 @@
                 </header>
 
                 <section>
-                    <form method="post" action="#">
+                    <form id="register-form">
                         <div class="row gtr-uniform">
                             <div class="col-6 col-12-xsmall">
                                 <input type="text" name="username" id="username" placeholder="Username" />
@@ -173,5 +104,28 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            fetch('/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(message => {
+                alert(message);
+                if (message === "User registered successfully") {
+                    window.location.href = 'login.html';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>

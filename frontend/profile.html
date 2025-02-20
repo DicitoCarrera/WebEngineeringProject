@@ -1,93 +1,44 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Profile - Learn Programming</title>
+    <title>Learning Programming - Profile</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        #wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        #header {
-            /* Keep the header at the top */
-        }
-
-        #main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
             padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .post {
-            width: 80%;
-            max-width: 800px;
-        }
-
-        #sidebar {
-            display: none;
-        }
-
-        #menu {
-            /* Styles for the menu (if needed) */
-        }
-
-        .profile-info, .completed-lessons, .edit-info {
+        .profile-container h2 {
             text-align: center;
             margin-bottom: 20px;
         }
-
-        .profile-info img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-        }
-
-        .profile-info h2 {
-            margin-top: 10px;
-        }
-
-        .profile-info p {
-            margin-top: 5px;
-        }
-
-        .completed-lessons ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .completed-lessons li {
-            margin: 10px 0;
-        }
-
-        .edit-info form {
+        .profile-container .actions {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: space-between;
         }
-
-        .edit-info input[type="text"], .edit-info input[type="email"], .edit-info input[type="password"] {
-            width: 80%;
-            max-width: 400px;
-            padding: 10px;
-            margin: 5px 0;
-            box-sizing: border-box;
+        .profile-container .actions li {
+            flex: 1;
+            margin: 0 5px;
         }
-
-        .edit-info input[type="submit"] {
-            margin-top: 10px;
+        .profile-container .actions li:first-child {
+            margin-left: 0;
+        }
+        .profile-container .actions li:last-child {
+            margin-right: 0;
+        }
+        #error-message {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
-
 <body class="is-preload">
-
     <div id="wrapper">
 
         <header id="header">
@@ -109,7 +60,6 @@
         </header>
 
         <section id="menu">
-
             <section>
                 <form class="search" method="get" action="#">
                     <input type="text" name="query" placeholder="Search" />
@@ -138,11 +88,9 @@
                     </li>
                 </ul>
             </section>
-
         </section>
 
         <div id="main">
-
             <article class="post">
                 <header>
                     <div class="title">
@@ -150,37 +98,43 @@
                     </div>
                 </header>
 
-                <section class="profile-info">
-                    <img src="images/avatar.jpg" alt="User Avatar" />
-                    <h2>John Doe</h2>
-                    <p>Email: john.doe@example.com</p>
-                    <p>Member since: January 1, 2020</p>
-                </section>
-
-                <section class="completed-lessons">
-                    <h3>Completed Lessons</h3>
-                    <ul>
-                        <li>Lesson 1: Introduction to Python</li>
-                        <li>Lesson 2: Variables and Data Types</li>
-                        <li>Lesson 3: Control Structures</li>
-                        <!-- Add more lessons as needed -->
-                    </ul>
-                </section>
-
-                <section class="edit-info">
-                    <h3>Edit Profile Information</h3>
-                    <form id="edit-profile-form" method="post" action="path/to/your/edit-profile-handler.php">
-                        <input type="text" name="name" placeholder="Name" value="John Doe" />
-                        <input type="email" name="email" placeholder="Email" value="john.doe@example.com" />
-                        <input type="password" name="password" placeholder="New Password" />
-                        <input type="submit" value="Save Changes" class="button primary" />
+                <section class="profile-container">
+                    <form id="profile-form">
+                        <div class="row gtr-uniform">
+                            <div class="col-12">
+                                <input type="text" name="username" id="username" placeholder="Username" />
+                            </div>
+                            <div class="col-12">
+                                <input type="email" name="email" id="email" placeholder="Email" />
+                            </div>
+                            <div class="col-12">
+                                <input type="password" name="currentPassword" id="currentPassword" placeholder="Current Password" />
+                            </div>
+                            <div class="col-12">
+                                <input type="password" name="newPassword" id="newPassword" placeholder="New Password" />
+                            </div>
+                            <div class="col-12">
+                                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm New Password" />
+                            </div>
+                            <div class="col-12">
+                                <ul class="actions">
+                                    <li>
+                                        <input type="submit" value="Update Profile" class="button large" />
+                                    </li>
+                                    <li>
+                                        <input type="reset" value="Reset" class="button alt large" />
+                                    </li>
+                                    <li>
+                                        <button id="logout-button" class="button alt large">Logout</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </form>
+                    <div id="error-message" style="color: red; display: none;"></div>
                 </section>
-
             </article>
-
         </div>
-
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -188,7 +142,66 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch user data and populate the form
+            fetch('/auth/profile')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Not authenticated');
+                    }
+                    return response.json();
+                })
+                .then(user => {
+                    document.getElementById('username').value = user.username;
+                    document.getElementById('email').value = user.email;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    window.location.href = 'login.html';
+                });
 
+            document.getElementById('profile-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(event.target);
+                const data = Object.fromEntries(formData.entries());
+
+                fetch('/auth/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.message) {
+                        alert(result.message);
+                    } else {
+                        document.getElementById('error-message').textContent = result.error || 'An error occurred';
+                        document.getElementById('error-message').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('error-message').textContent = 'An error occurred. Please try again.';
+                    document.getElementById('error-message').style.display = 'block';
+                });
+            });
+
+            document.getElementById('logout-button').addEventListener('click', function(event) {
+                event.preventDefault();
+                fetch('/auth/logout', {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(result => {
+                    alert(result.message);
+                    window.location.href = 'login.html';
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
 </body>
-
 </html>
