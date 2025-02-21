@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Learning Programming - Lessons</title>
+    <title>Lessons Java - Learn Programming</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -96,9 +96,9 @@
                     <li>
                         <a href="#">Courses</a> 
                         <ul class="dropdown">
-                            <li><a href="#">Python</a></li>
-                            <li><a href="#">Java</a></li>
-                            <li><a href="#">C</a></li>
+                            <li><a href="lessons-python.html">Python</a></li>
+                            <li><a href="lessons-java.html">Java</a></li>
+                            <li><a href="lessons-c.html">C</a></li>
                         </ul>
                     </li>
                     <li><a href="about-us.html">About us</a></li>
@@ -115,24 +115,12 @@
         </header>
 
       <section id="menu">
-        <section>
-          <form class="search" method="get" action="#">
-            <input type="text" name="query" placeholder="Search" />
-          </form>
-        </section>
-
             <section>
                 <ul class="links">
                     <li>
-                        <a href="#">
+                        <a href="profile.html">
                             <h3>My Account</h3>
                             <p>Manage your account settings and preferences</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <h3>Learning Progress</h3>
-                            <p>Track your learning journey and achievements</p>
                         </a>
                     </li>
                     <li>
@@ -203,10 +191,10 @@
                             lessonElement.classList.add("mini-post");
                             lessonElement.innerHTML = `
                                 <header>
-                                    <h3><a href="single.html">${lesson.title}</a></h3>
+                                    <h3><a href="single.html?title=${encodeURIComponent(lesson.title)}">${lesson.title}</a></h3>
                                     <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
                                 </header>
-                                <a href="single.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
+                                <a href="single.html?title=${encodeURIComponent(lesson.title)}" class="image"><img src="images/${lesson.title}.jpg" alt="" /></a>
                             `;
                             lessonsContainer.appendChild(lessonElement);
                         }
