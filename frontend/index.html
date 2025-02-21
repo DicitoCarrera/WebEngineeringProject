@@ -191,22 +191,23 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Проверка состояния авторизации
             const isLoggedIn = localStorage.getItem('authToken') !== null;
-
+    
             const loginButton = document.getElementById('login-button');
             if (isLoggedIn) {
                 loginButton.textContent = 'Profile';
                 loginButton.href = 'profile.html';
             }
-
+    
             fetch("http://localhost:3000/lessons")
                 .then(response => response.json())
                 .then(data => {
                     const lessonsContainer = document.getElementById("lessons-container");
-
+    
                     data.forEach(lesson => {
                         const lessonElement = document.createElement("article");
                         lessonElement.classList.add("post");

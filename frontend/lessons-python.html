@@ -36,8 +36,8 @@
         }
 
         .mini-post header h3 {
-            margin: 0 0 20px 0; /* Добавлен отступ снизу для заголовка */
-            font-size: 1.2em; /* Уменьшенный размер текста заголовков */
+            margin: 0 0 20px 0;
+            font-size: 1.2em;
         }
 
         .mini-post header time {
@@ -70,7 +70,7 @@
             text-align: center;
             position: fixed;
             bottom: 0;
-            left: 0; /* Футер начинается с левого края */
+            left: 0;
             width: 100%;
         }
 
@@ -152,31 +152,7 @@
       </section>
 
         <div id="main" class="wrapper-lessons">
-
-            <article class="mini-post">
-                <header>
-                    <h3><a href="single.html">Variables and Their Types in Python</a></h3>
-                    <time class="published" datetime="2025-02-15">February 15, 2025</time>
-                </header>
-                <a href="single.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
-            </article>
-
-            <article class="mini-post">
-                <header>
-                    <h3><a href="single.html">Introduction to Arrays in Java</a></h3>
-                    <time class="published" datetime="2025-02-16">February 16, 2025</time>
-                </header>
-                <a href="single.html" class="image"><img src="images/pic02.jpg" alt="" /></a>
-            </article>
-
-            <article class="mini-post">
-                <header>
-                    <h3><a href="single.html">Functions in C: Declaration and Invocation</a></h3>
-                    <time class="published" datetime="2025-02-17">February 17, 2025</time>
-                </header>
-                <a href="single.html" class="image"><img src="images/pic03.jpg" alt="" /></a>
-            </article>
-
+            <!-- Lessons will be loaded here -->
         </div>
 
       <section id="footer">
@@ -213,5 +189,27 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("http://localhost:3000/lessons")
+                .then(response => response.json())
+                .then(data => {
+                    const lessonsContainer = document.getElementById("main");
+
+                    data.forEach(lesson => {
+                        const lessonElement = document.createElement("article");
+                        lessonElement.classList.add("mini-post");
+                        lessonElement.innerHTML = `
+                            <header>
+                                <h3><a href="single.html">${lesson.title}</a></h3>
+                                <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
+                            </header>
+                            <a href="single.html" class="image"><img src="images/pic01.jpg" alt="" /></a>
+                        `;
+                        lessonsContainer.appendChild(lessonElement);
+                    });
+                });
+        });
+    </script>
   </body>
 </html>
