@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="meta">
                                         <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
-                                        <a href="#" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
+                                        <a href="author.html?name=${encodeURIComponent(lesson.teacher)}" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
                                     </div>
                                 </header>
                                 <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
