@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Learning Programming</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="index.html">Learn Programming</a></h1>
+            <nav class="links">
+                <ul>
+                    <li>
+                        <a href="#">Courses</a> 
+                        <ul class="dropdown">
+                            <li><a href="lessons-python.html">Python</a></li>
+                            <li><a href="#">Java</a></li>
+                            <li><a href="#">C</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="about-us.html">About us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <nav class="main">
+                <ul>
+                    <li class="menu">
+                        <a class="fa-bars" href="#menu">Menu</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <section id="menu">
+
+            <!-- Search -->
+            <section>
+                <form class="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="Search" />
+                </form>
+            </section>
+
+            <!-- Links -->
+            <section>
+                <ul class="links">
+                    <li>
+                        <a href="profile.html">
+                            <h3>My Account</h3>
+                            <p>Manage your account settings and preferences</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="learning-progress.html">
+                            <h3>Learning Progress</h3>
+                            <p>Track your learning journey and achievements</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resources.html">
+                            <h3>Resources</h3>
+                            <p>Access study materials, guides, and documentation</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Actions -->
+            <section>
+                <ul class="actions stacked">
+                    <li><a href="login.html" id="login-button" class="button large fit">Log In</a></li>
+                </ul>
+            </section>
+
+        </section>
+
+        <!-- Main -->
+        <div id="main">
+            <div id="lessons-container"></div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Проверка состояния авторизации
+            const isLoggedIn = localStorage.getItem('authToken') !== null;
+    
+            const loginButton = document.getElementById('login-button');
+            if (isLoggedIn) {
+                loginButton.textContent = 'Profile';
+                loginButton.href = 'profile.html';
+            }
+    
+            const urlParams = new URLSearchParams(window.location.search);
+            const authorName = urlParams.get('name');
+    
+            fetch("http://localhost:3000/lessons")
+                .then(response => response.json())
+                .then(data => {
+                    const lessonsContainer = document.getElementById("lessons-container");
+    
+                    data.forEach(lesson => {
+                        if (lesson.teacher === authorName) {
+                            const lessonElement = document.createElement("article");
+                            lessonElement.classList.add("post");
+                            lessonElement.innerHTML = `
+                                <header>
+                                    <div class="title">
+                                        <h2><a href="single.html">${lesson.title}</a></h2>
+                                        <p>${lesson.description}</p>
+                                    </div>
+                                    <div class="meta">
+                                        <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
+                                        <a href="#" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
+                                    </div>
+                                </header>
+                                <a href="single.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                                <p>${lesson.explanation}</p>
+                                <footer>
+                                    <ul class="actions">
+                                        <li><a href="single.html" class="button large">Take a lesson</a></li>
+                                    </ul>
+                                    <ul class="stats">
+                                        <li><a href="#">${lesson.language}</a></li>
+                                        <li><a href="#" class="icon solid fa-heart">28</a></li>
+                                        <li><a href="#" class="icon solid fa-comment">128</a></li>
+                                    </ul>
+                                </footer>
+                            `;
+                            lessonsContainer.appendChild(lessonElement);
+                        }
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

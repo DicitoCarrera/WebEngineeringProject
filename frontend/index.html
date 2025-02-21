@@ -20,8 +20,8 @@
                         <a href="#">Courses</a> 
                         <ul class="dropdown">
                             <li><a href="lessons-python.html">Python</a></li>
-                            <li><a href="#">Java</a></li>
-                            <li><a href="#">C</a></li>
+                            <li><a href="lessons-java.html">Java</a></li>
+                            <li><a href="lessons-c.html">C</a></li>
                         </ul>
                     </li>
                     <li><a href="about-us.html">About us</a></li>
@@ -214,19 +214,19 @@
                         lessonElement.innerHTML = `
                             <header>
                                 <div class="title">
-                                    <h2><a href="single.html">${lesson.title}</a></h2>
+                                    <h2><a href="single.html?title=${encodeURIComponent(lesson.title)}">${lesson.title}</a></h2>
                                     <p>${lesson.description}</p>
                                 </div>
                                 <div class="meta">
                                     <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
-                                    <a href="#" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
+                                    <a href="author.html?name=${encodeURIComponent(lesson.teacher)}" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
                                 </div>
                             </header>
-                            <a href="single.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                            <a href="single.html?title=${encodeURIComponent(lesson.title)}" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
                             <p>${lesson.explanation}</p>
                             <footer>
                                 <ul class="actions">
-                                    <li><a href="single.html" class="button large">Take a lesson</a></li>
+                                    <li><a href="single.html?title=${encodeURIComponent(lesson.title)}" class="button large">Take a lesson</a></li>
                                 </ul>
                                 <ul class="stats">
                                     <li><a href="#">${lesson.language}</a></li>
