@@ -20,7 +20,6 @@ app.use(session({
 app.use("/auth", authRoutes);
 app.use("/lessons", lessonsRoutes);
 
-
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
