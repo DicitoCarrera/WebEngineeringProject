@@ -1,0 +1,194 @@
+doctype html
+html
+  head
+    title Home Page - Learn Programming
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+    link(rel='stylesheet', href='assets/css/main.css')
+  body.is-preload
+    #wrapper
+      // Header
+      header#header
+        h1
+          a(href='index.html') Learn Programming
+        nav.links
+          ul
+            li
+              a(href='#') Courses
+              ul.dropdown
+                li
+                  a(href='lessons-python.html') Python
+                li
+                  a(href='lessons-java.html') Java
+                li
+                  a(href='lessons-c.html') C
+            li
+              a(href='about-us.html') About us
+            li
+              a(href='contact.html') Contact
+        nav.main
+          ul
+            li.menu
+              a.fa-bars(href='#menu') Menu
+
+      // Menu
+      section#menu
+        // Links
+        section
+          ul.links
+            li
+              a(href='profile.html')
+                h3 My Account
+                p Manage your account settings and preferences
+            li
+              a(href='resources.html')
+                h3 Resources
+                p Access study materials, guides, and documentation
+        // Actions
+        section
+          ul.actions.stacked
+            li
+              a#login-button.button.large.fit(href='login.html') Log In
+
+      // Main
+      #main
+        #lessons-container
+
+      // Sidebar
+      section#sidebar
+        // Intro
+        section#intro
+          a.logo(href='#')
+            img(src='images/logo.jpg', alt='Learn Programming Logo')
+          header
+            h2 Learn Programming
+            p Master Coding with Us!
+        // Mini Posts
+        section
+          .mini-posts
+            article.mini-post
+              header
+                h3
+                  a(href='lessons-python.html') Python Made Easy: Start Your Coding Journey
+                time.published(datetime='2025-02-21') February 21, 2025
+              a.image(href='lessons-python.html')
+                img(src='images/lessons-python.jpg', alt='')
+            article.mini-post
+              header
+                h3
+                  a(href='lessons-java.html') Mastering Java: From Basics to Advanced
+                time.published(datetime='2025-02-21') February 21, 2025
+              a.image(href='lessons-java.html')
+                img(src='images/lessons-java.webp', alt='')
+            article.mini-post
+              header
+                h3
+                  a(href='lessons-c.html') C Programming Unlocked: Build Powerful Applications
+                time.published(datetime='2025-02-12') February 12, 2025
+              a.image(href='lessons-c.html')
+                img(src='images/lessons-c.jpg', alt='')
+        // Posts List
+        section
+          ul.posts
+            li
+              article
+                header
+                  h3
+                    a(href='article1.html') Choosing Computer for Coding
+                  time.published(datetime='2025-02-21') February 21, 2025
+                a.image(href='article1.html')
+                  img(src='images/article1.jpg', alt='')
+            li
+              article
+                header
+                  h3
+                    a(href='article2.html') Choosing the Right Code Editor
+                  time.published(datetime='2025-02-21') February 21, 2025
+                a.image(href='article2.html')
+                  img(src='images/article2.jpg', alt='')
+            li
+              article
+                header
+                  h3
+                    a(href='article3.html') Debugging Basics: Find and Fix Errors
+                  time.published(datetime='2025-02-21') February 21, 2025
+                a.image(href='article3.html')
+                  img(src='images/article3.jpg', alt='')
+        // About
+        section.blurb
+          h2 About
+          p Join us to learn coding from scratch or enhance your skills with our interactive lessons. Practice in real-time and master popular programming languages with ease!
+          ul.actions
+            li
+              a.button(href='about-us.html') Learn More
+        // Footer
+        section#footer
+          ul.icons
+            li
+              a.icon.brands.fa-twitter(href='#')
+                span.label Twitter
+            li
+              a.icon.brands.fa-facebook-f(href='#')
+                span.label Facebook
+            li
+              a.icon.brands.fa-instagram(href='#')
+                span.label Instagram
+            li
+              a.icon.solid.fa-rss(href='#')
+                span.label RSS
+            li
+              a.icon.solid.fa-envelope(href='#')
+                span.label Email
+          p.copyright &copy; Untitled.
+
+    // Scripts
+    script(src='assets/js/jquery.min.js')
+    script(src='assets/js/browser.min.js')
+    script(src='assets/js/breakpoints.min.js')
+    script(src='assets/js/util.js')
+    script(src='assets/js/main.js')
+    script.
+      document.addEventListener("DOMContentLoaded", function() {
+          // Authentication check
+          const isLoggedIn = localStorage.getItem('authToken') !== null;
+
+          const loginButton = document.getElementById('login-button');
+          if (isLoggedIn) {
+              loginButton.textContent = 'Profile';
+              loginButton.href = 'profile.html';
+          }
+
+          fetch("http://localhost:3000/lessons")
+              .then(response => response.json())
+              .then(data => {
+                  const lessonsContainer = document.getElementById("lessons-container");
+
+                  data.forEach(lesson => {
+                      const lessonElement = document.createElement("article");
+                      lessonElement.classList.add("post");
+                      lessonElement.innerHTML = `
+                          <header>
+                              <div class="title">
+                                  <h2><a href="single.html?title=${encodeURIComponent(lesson.title)}">${lesson.title}</a></h2>
+                                  <p>${lesson.description}</p>
+                              </div>
+                              <div class="meta">
+                                  <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
+                                  <a href="author.html?name=${encodeURIComponent(lesson.teacher)}" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
+                              </div>
+                          </header>
+                          <a href="single.html?title=${encodeURIComponent(lesson.title)}" class="image featured"><img src="images/${lesson.title}.jpg" alt="" /></a>
+                          <p>${lesson.explanation}</p>
+                          <footer>
+                              <ul class="actions">
+                                  <li><a href="single.html?title=${encodeURIComponent(lesson.title)}" class="button large">Take a lesson</a></li>
+                              </ul>
+                              <ul class="stats">
+                                  <li><a href="lessons-${lesson.language}.html">${lesson.language}</a></li>
+                              </ul>
+                          </footer>
+                      `;
+                      lessonsContainer.appendChild(lessonElement);
+                  });
+              });
+      });
