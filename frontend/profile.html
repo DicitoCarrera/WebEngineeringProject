@@ -1,128 +1,165 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Profile - Learn Programming</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        .profile-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .profile-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .profile-container .actions {
-            display: flex;
-            justify-content: space-between;
-        }
-        .profile-container .actions li {
-            flex: 1;
-            margin: 0 5px;
-        }
-        .profile-container .actions li:first-child {
-            margin-left: 0;
-        }
-        .profile-container .actions li:last-child {
-            margin-right: 0;
-        }
-        #error-message {
-            text-align: center;
-            margin-top: 20px;
-        }
+      .profile-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .profile-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .profile-container .actions {
+        display: flex;
+        justify-content: space-between;
+      }
+      .profile-container .actions li {
+        flex: 1;
+        margin: 0 5px;
+      }
+      .profile-container .actions li:first-child {
+        margin-left: 0;
+      }
+      .profile-container .actions li:last-child {
+        margin-right: 0;
+      }
+      #error-message {
+        text-align: center;
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body class="is-preload">
+  </head>
+  <body class="is-preload">
     <div id="wrapper">
+      <header id="header">
+        <h1><a href="/">Learn Programming</a></h1>
+        <nav class="links">
+          <ul>
+            <li><a href="lessons-python.html">Courses</a></li>
+            <li><a href="about-us.html">About us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="main">
+          <ul>
+            <li class="menu">
+              <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <header id="header">
-            <h1><a href="/">Learn Programming</a></h1>
-            <nav class="links">
-                <ul>
-                    <li><a href="lessons-python.html">Courses</a></li>
-                    <li><a href="about-us.html">About us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <nav class="main">
-                <ul>
-                    <li class="menu">
-                        <a class="fa-bars" href="#menu">Menu</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="menu">
-            <section>
-                <ul class="links">
-                    <li>
-                        <a href="#">
-                            <h3>My Account</h3>
-                            <p>Manage your account settings and preferences</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="resources.html">
-                            <h3>Resources</h3>
-                            <p>Access study materials, guides, and documentation</p>
-                        </a>
-                    </li>
-                </ul>
-            </section>
+      <section id="menu">
+        <section>
+          <ul class="links">
+            <li>
+              <a href="#">
+                <h3>My Account</h3>
+                <p>Manage your account settings and preferences</p>
+              </a>
+            </li>
+            <li>
+              <a href="resources.html">
+                <h3>Resources</h3>
+                <p>Access study materials, guides, and documentation</p>
+              </a>
+            </li>
+          </ul>
         </section>
+      </section>
 
-        <div id="main">
-            <article class="post">
-                <header>
-                    <div class="title">
-                        <h2><a href="#">Profile</a></h2>
-                    </div>
-                </header>
+      <div id="main">
+        <article class="post">
+          <header>
+            <div class="title">
+              <h2><a href="#">Profile</a></h2>
+            </div>
+          </header>
 
-                <section class="profile-container">
-                    <form id="profile-form">
-                        <div class="row gtr-uniform">
-                            <div class="col-12">
-                                <input type="text" name="username" id="username" placeholder="Username" />
-                            </div>
-                            <div class="col-12">
-                                <input type="email" name="email" id="email" placeholder="Email" />
-                            </div>
-                            <div class="col-12">
-                                <input type="password" name="currentPassword" id="currentPassword" placeholder="Current Password" />
-                            </div>
-                            <div class="col-12">
-                                <input type="password" name="newPassword" id="newPassword" placeholder="New Password" />
-                            </div>
-                            <div class="col-12">
-                                <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm New Password" />
-                            </div>
-                            <div class="col-12">
-                                <ul class="actions">
-                                    <li>
-                                        <input type="submit" value="Update Profile" class="button large" />
-                                    </li>
-                                    <li>
-                                        <input type="reset" value="Reset" class="button alt large" />
-                                    </li>
-                                    <li>
-                                        <button id="logout-button" class="button alt large">Logout</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </form>
-                    <div id="error-message" style="color: red; display: none;"></div>
-                </section>
-            </article>
-        </div>
+          <section class="profile-container">
+            <form id="profile-form">
+              <div class="row gtr-uniform">
+                <div class="col-12">
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="col-12">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="col-12">
+                  <input
+                    type="password"
+                    name="currentPassword"
+                    id="currentPassword"
+                    placeholder="Current Password"
+                  />
+                </div>
+                <div class="col-12">
+                  <input
+                    type="password"
+                    name="newPassword"
+                    id="newPassword"
+                    placeholder="New Password"
+                  />
+                </div>
+                <div class="col-12">
+                  <input
+                    type="password"
+                    name="confirm-password"
+                    id="confirm-password"
+                    placeholder="Confirm New Password"
+                  />
+                </div>
+                <div class="col-12">
+                  <ul class="actions">
+                    <li>
+                      <input
+                        type="submit"
+                        value="Update Profile"
+                        class="button large"
+                      />
+                    </li>
+                    <li>
+                      <input
+                        type="reset"
+                        value="Reset"
+                        class="button alt large"
+                      />
+                    </li>
+                    <li>
+                      <button id="logout-button" class="button alt large">
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+            <div id="error-message" style="color: red; display: none"></div>
+          </section>
+        </article>
+      </div>
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -131,65 +168,75 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fetch user data and populate the form
-            fetch('/auth/profile')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Not authenticated');
-                    }
-                    return response.json();
-                })
-                .then(user => {
-                    document.getElementById('username').value = user.username;
-                    document.getElementById('email').value = user.email;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    window.location.href = 'login.html';
-                });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch user data and populate the form
+        fetch("/auth/profile")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Not authenticated");
+            }
+            return response.json();
+          })
+          .then((user) => {
+            document.getElementById("username").value = user.username;
+            document.getElementById("email").value = user.email;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            window.location.href = "login.html";
+          });
 
-            document.getElementById('profile-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(event.target);
-                const data = Object.fromEntries(formData.entries());
+        document.getElementById("profile-form").addEventListener(
+          "submit",
+          function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
 
-                fetch('/auth/profile', {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.message) {
-                        alert(result.message);
-                    } else {
-                        document.getElementById('error-message').textContent = result.error || 'An error occurred';
-                        document.getElementById('error-message').style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('error-message').textContent = 'An error occurred. Please try again.';
-                    document.getElementById('error-message').style.display = 'block';
-                });
-            });
+            fetch("/auth/profile", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                if (result.message) {
+                  alert(result.message);
+                } else {
+                  document.getElementById("error-message").textContent =
+                    result.error || "An error occurred";
+                  document.getElementById("error-message").style
+                    .display = "block";
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                document.getElementById("error-message").textContent =
+                  "An error occurred. Please try again.";
+                document.getElementById("error-message").style.display =
+                  "block";
+              });
+          },
+        );
 
-            document.getElementById('logout-button').addEventListener('click', function(event) {
-                event.preventDefault();
-                fetch('/auth/logout', {
-                    method: 'POST'
-                })
-                .then(response => response.json())
-                .then(result => {
-                    alert(result.message);
-                    window.location.href = 'login.html';
-                })
-                .catch(error => console.error('Error:', error));
-            });
-        });
+        document.getElementById("logout-button").addEventListener(
+          "click",
+          function (event) {
+            event.preventDefault();
+            fetch("/auth/logout", {
+              method: "POST",
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                alert(result.message);
+                window.location.href = "login.html";
+              })
+              .catch((error) => console.error("Error:", error));
+          },
+        );
+      });
     </script>
-</body>
+  </body>
 </html>

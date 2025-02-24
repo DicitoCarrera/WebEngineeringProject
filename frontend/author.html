@@ -1,77 +1,78 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Lessons - Learn Programming</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <link rel="stylesheet" href="assets/css/main.css" />
-</head>
-<body class="is-preload">
-
+  </head>
+  <body class="is-preload">
     <!-- Wrapper -->
     <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <h1><a href="/">Learn Programming</a></h1>
+        <nav class="links">
+          <ul>
+            <li>
+              <a href="#">Courses</a>
+              <ul class="dropdown">
+                <li><a href="lessons-python.html">Python</a></li>
+                <li><a href="lessons-java.html">Java</a></li>
+                <li><a href="lessons-c.html">C</a></li>
+              </ul>
+            </li>
+            <li><a href="about-us.html">About us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="main">
+          <ul>
+            <li class="menu">
+              <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <!-- Header -->
-        <header id="header">
-            <h1><a href="/">Learn Programming</a></h1>
-            <nav class="links">
-                <ul>
-                    <li>
-                        <a href="#">Courses</a> 
-                        <ul class="dropdown">
-                            <li><a href="lessons-python.html">Python</a></li>
-                            <li><a href="lessons-java.html">Java</a></li>
-                            <li><a href="lessons-c.html">C</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about-us.html">About us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <nav class="main">
-                <ul>
-                    <li class="menu">
-                        <a class="fa-bars" href="#menu">Menu</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Menu -->
-        <section id="menu">
-
-            <!-- Links -->
-            <section>
-                <ul class="links">
-                    <li>
-                        <a href="profile.html">
-                            <h3>My Account</h3>
-                            <p>Manage your account settings and preferences</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="resources.html">
-                            <h3>Resources</h3>
-                            <p>Access study materials, guides, and documentation</p>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Actions -->
-            <section>
-                <ul class="actions stacked">
-                    <li><a href="login.html" id="login-button" class="button large fit">Log In</a></li>
-                </ul>
-            </section>
-
+      <!-- Menu -->
+      <section id="menu">
+        <!-- Links -->
+        <section>
+          <ul class="links">
+            <li>
+              <a href="profile.html">
+                <h3>My Account</h3>
+                <p>Manage your account settings and preferences</p>
+              </a>
+            </li>
+            <li>
+              <a href="resources.html">
+                <h3>Resources</h3>
+                <p>Access study materials, guides, and documentation</p>
+              </a>
+            </li>
+          </ul>
         </section>
 
-        <!-- Main -->
-        <div id="main">
-            <div id="lessons-container"></div>
-        </div>
+        <!-- Actions -->
+        <section>
+          <ul class="actions stacked">
+            <li>
+              <a href="login.html" id="login-button" class="button large fit"
+              >Log In</a>
+            </li>
+          </ul>
+        </section>
+      </section>
 
+      <!-- Main -->
+      <div id="main">
+        <div id="lessons-container"></div>
+      </div>
     </div>
 
     <!-- Scripts -->
@@ -82,55 +83,65 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check authentication status
-            const isLoggedIn = localStorage.getItem('authToken') !== null;
-    
-            const loginButton = document.getElementById('login-button');
-            if (isLoggedIn) {
-                loginButton.textContent = 'Profile';
-                loginButton.href = 'profile.html';
-            }
-    
-            const urlParams = new URLSearchParams(window.location.search);
-            const authorName = urlParams.get('name');
-    
-            fetch("http://localhost:3000/lessons")
-                .then(response => response.json())
-                .then(data => {
-                    const lessonsContainer = document.getElementById("lessons-container");
-    
-                    data.forEach(lesson => {
-                        if (lesson.teacher === authorName) {
-                            const lessonElement = document.createElement("article");
-                            lessonElement.classList.add("post");
-                            lessonElement.innerHTML = `
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check authentication status
+        const isLoggedIn = localStorage.getItem("authToken") !== null;
+
+        const loginButton = document.getElementById("login-button");
+        if (isLoggedIn) {
+          loginButton.textContent = "Profile";
+          loginButton.href = "profile.html";
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const authorName = urlParams.get("name");
+
+        fetch("http://localhost:3000/lessons")
+          .then((response) => response.json())
+          .then((data) => {
+            const lessonsContainer = document.getElementById(
+              "lessons-container",
+            );
+
+            data.forEach((lesson) => {
+              if (lesson.teacher === authorName) {
+                const lessonElement = document.createElement("article");
+                lessonElement.classList.add("post");
+                lessonElement.innerHTML = `
                                 <header>
                                     <div class="title">
-                                        <h2><a href="single.html?title=${encodeURIComponent(lesson.title)}">${lesson.title}</a></h2>
+                                        <h2><a href="single.html?title=${
+                  encodeURIComponent(lesson.title)
+                }">${lesson.title}</a></h2>
                                         <p>${lesson.description}</p>
                                     </div>
                                     <div class="meta">
-                                        <time class="published" datetime="${lesson.date}">${new Date(lesson.date).toLocaleDateString()}</time>
+                                        <time class="published" datetime="${lesson.date}">${
+                  new Date(lesson.date).toLocaleDateString()
+                }</time>
                                         <a href="#" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
                                     </div>
                                 </header>
-                                <a href="single.html?title=${encodeURIComponent(lesson.title)}" class="image featured"><img src="images/${lesson.title}.jpg" alt="" /></a>
+                                <a href="single.html?title=${
+                  encodeURIComponent(lesson.title)
+                }" class="image featured"><img src="images/${lesson.title}.jpg" alt="" /></a>
                                 <p>${lesson.explanation}</p>
                                 <footer>
                                     <ul class="actions">
-                                        <li><a href="single.html?title=${encodeURIComponent(lesson.title)}" class="button large">Take a lesson</a></li>
+                                        <li><a href="single.html?title=${
+                  encodeURIComponent(lesson.title)
+                }" class="button large">Take a lesson</a></li>
                                     </ul>
                                     <ul class="stats">
                                         <li><a href="lessons-${lesson.language}.html">${lesson.language}</a></li>
                                     </ul>
                                 </footer>
                             `;
-                            lessonsContainer.appendChild(lessonElement);
-                        }
-                    });
-                });
-        });
+                lessonsContainer.appendChild(lessonElement);
+              }
+            });
+          });
+      });
     </script>
-</body>
+  </body>
 </html>
