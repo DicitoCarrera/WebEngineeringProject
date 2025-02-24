@@ -10,11 +10,12 @@ app.use(bodyParser.json());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "./views"));
 
+app.use(express.static(path.join(__dirname, "./")));
+
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.use(express.static(path.join(__dirname, "./")));
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
