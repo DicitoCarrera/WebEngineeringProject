@@ -178,7 +178,7 @@
     <script src="assets/js/main.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        fetch("http://localhost:3000/lessons")
+        fetch("http://localhost:5000/lessons")
           .then((response) => response.json())
           .then((data) => {
             const lessonsContainer = document.getElementById("main");

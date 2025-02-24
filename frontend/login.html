@@ -115,7 +115,7 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
 
-            fetch("/auth/login", {
+            fetch("http://localhost:5000/auth/login", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

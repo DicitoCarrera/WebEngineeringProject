@@ -248,7 +248,7 @@
           loginButton.href = "profile.html";
         }
 
-        fetch("http://localhost:3000/lessons")
+        fetch("http://localhost:5000/lessons")
           .then((response) => response.json())
           .then((data) => {
             const lessonsContainer = document.getElementById(
