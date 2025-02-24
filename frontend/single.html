@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Single - Future Imperfect by HTML5 UP</title>
+        <title>Lesson - Learn Programming</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
@@ -14,15 +14,15 @@
 
             <!-- Header -->
             <header id="header">
-                <h1><a href="index.html">Learn Programming</a></h1>
+                <h1><a href="/">Learn Programming</a></h1>
                 <nav class="links">
                     <ul>
                         <li>
                             <a href="#">Courses</a> 
                             <ul class="dropdown">
                                 <li><a href="lessons-python.html">Python</a></li>
-                                <li><a href="#">Java</a></li>
-                                <li><a href="#">C</a></li>
+                                <li><a href="lessons-java.html">Java</a></li>
+                                <li><a href="lessons-c.html">C</a></li>
                             </ul>
                         </li>
                         <li><a href="about-us.html">About us</a></li>
@@ -31,18 +31,40 @@
                 </nav>
                 <nav class="main">
                     <ul>
-                        <li class="search">
-                            <a class="fa-search" href="#search">Search</a>
-                            <form id="search" method="get" action="#">
-                                <input type="text" name="query" placeholder="Search" />
-                            </form>
-                        </li>
                         <li class="menu">
                             <a class="fa-bars" href="#menu">Menu</a>
                         </li>
                     </ul>
                 </nav>
             </header>
+            <!-- Menu -->
+            <section id="menu">
+                <!-- Links -->
+                    <section>
+                        <ul class="links">
+                            <li>
+                                <a href="profile.html">
+                                    <h3>My Account</h3>
+                                    <p>Manage your account settings and preferences</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="resources.html">
+                                    <h3>Resources</h3>
+                                    <p>Access study materials, guides, and documentation</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                <!-- Actions -->
+                    <section>
+                        <ul class="actions stacked">
+                            <li><a href="login.html" class="button large fit">Log In</a></li>
+                        </ul>
+                    </section>
+
+            </section>
 
             <!-- Main -->
             <div id="main">
@@ -88,7 +110,7 @@
                                         <a href="author.html?name=${encodeURIComponent(lesson.teacher)}" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
                                     </div>
                                 </header>
-                                <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
+                                <span class="image featured"><img src="images/${lesson.title}.jpg" alt="" /></span>
                                 <p>${lesson.content}</p>
                                 <div>
                                     <label for="language-selector">Select Language:</label>
@@ -106,8 +128,6 @@
                                 <footer>
                                     <ul class="stats">
                                         <li><a href="lessons-${lesson.language}.html">${lesson.language}</a></li>
-                                        <li><a href="#" class="icon solid fa-heart">28</a></li>
-                                        <li><a href="#" class="icon solid fa-comment">128</a></li>
                                     </ul>
                                 </footer>`;
                             lessonsContainer.appendChild(lessonElement);

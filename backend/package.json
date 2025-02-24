@@ -21,6 +21,7 @@
     "monaco-editor": "^0.52.2",
     "mongodb": "^6.13.0",
     "morgan": "~1.9.1",
+    "pug": "^3.0.3",
     "sqlite3": "^5.1.7"
   },
   "description": "",

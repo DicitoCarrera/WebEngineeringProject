@@ -8,6 +8,16 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const port = 3000;
 
+// Установите Pug как шаблонизатор
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, '../frontend/views'));
+
+// Убедитесь, что маршрут для главной страницы идет перед статическими файлами
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
@@ -29,10 +39,6 @@ app.get('/lessons', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
-});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

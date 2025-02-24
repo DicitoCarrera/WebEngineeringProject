@@ -24,7 +24,7 @@ db.serialize(() => {
     "Arrays in Java are used to store multiple values in a single variable, instead of declaring separate variables for each value. An array is a collection of variables of the same type that are stored in contiguous memory locations.\n\nTo declare an array in Java, you use the following syntax:\n\n\nint[] numbers;\n\nnumbers = new int[5];\n\nYou can also initialize an array at the time of declaration:\n\nint[] numbers = {1, 2, 3, 4, 5};\n\nElements in an array are accessed using their index, starting from 0. For example:\n\nSystem.out.println(numbers[0]); // Outputs 1\n\nArrays provide efficient ways to store and manipulate collections of data, making them essential for many programming tasks."
   );
   stmt.run(
-    "Functions in C: Declaration and Invocation", 
+    "Functions in C Declaration and Invocation", 
     "Structuring Code with Functions", 
     "2025-02-17", 
     "Diego Carrera", 

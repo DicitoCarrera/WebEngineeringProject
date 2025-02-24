@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Learning Programming</title>
+    <title>Lessons - Learn Programming</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -13,15 +13,15 @@
 
         <!-- Header -->
         <header id="header">
-            <h1><a href="index.html">Learn Programming</a></h1>
+            <h1><a href="/">Learn Programming</a></h1>
             <nav class="links">
                 <ul>
                     <li>
                         <a href="#">Courses</a> 
                         <ul class="dropdown">
                             <li><a href="lessons-python.html">Python</a></li>
-                            <li><a href="#">Java</a></li>
-                            <li><a href="#">C</a></li>
+                            <li><a href="lessons-java.html">Java</a></li>
+                            <li><a href="lessons-c.html">C</a></li>
                         </ul>
                     </li>
                     <li><a href="about-us.html">About us</a></li>
@@ -40,13 +40,6 @@
         <!-- Menu -->
         <section id="menu">
 
-            <!-- Search -->
-            <section>
-                <form class="search" method="get" action="#">
-                    <input type="text" name="query" placeholder="Search" />
-                </form>
-            </section>
-
             <!-- Links -->
             <section>
                 <ul class="links">
@@ -54,12 +47,6 @@
                         <a href="profile.html">
                             <h3>My Account</h3>
                             <p>Manage your account settings and preferences</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="learning-progress.html">
-                            <h3>Learning Progress</h3>
-                            <p>Track your learning journey and achievements</p>
                         </a>
                     </li>
                     <li>
@@ -96,7 +83,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Проверка состояния авторизации
+            // Check authentication status
             const isLoggedIn = localStorage.getItem('authToken') !== null;
     
             const loginButton = document.getElementById('login-button');
@@ -120,7 +107,7 @@
                             lessonElement.innerHTML = `
                                 <header>
                                     <div class="title">
-                                        <h2><a href="single.html">${lesson.title}</a></h2>
+                                        <h2><a href="single.html?title=${encodeURIComponent(lesson.title)}">${lesson.title}</a></h2>
                                         <p>${lesson.description}</p>
                                     </div>
                                     <div class="meta">
@@ -128,16 +115,14 @@
                                         <a href="#" class="author"><span class="name">${lesson.teacher}</span><img src="images/avatar.jpg" alt="" /></a>
                                     </div>
                                 </header>
-                                <a href="single.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+                                <a href="single.html?title=${encodeURIComponent(lesson.title)}" class="image featured"><img src="images/${lesson.title}.jpg" alt="" /></a>
                                 <p>${lesson.explanation}</p>
                                 <footer>
                                     <ul class="actions">
-                                        <li><a href="single.html" class="button large">Take a lesson</a></li>
+                                        <li><a href="single.html?title=${encodeURIComponent(lesson.title)}" class="button large">Take a lesson</a></li>
                                     </ul>
                                     <ul class="stats">
-                                        <li><a href="#">${lesson.language}</a></li>
-                                        <li><a href="#" class="icon solid fa-heart">28</a></li>
-                                        <li><a href="#" class="icon solid fa-comment">128</a></li>
+                                        <li><a href="lessons-${lesson.language}.html">${lesson.language}</a></li>
                                     </ul>
                                 </footer>
                             `;
