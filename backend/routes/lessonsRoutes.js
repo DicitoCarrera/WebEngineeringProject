@@ -3,7 +3,7 @@ const lessonsDB = require("../database/lessons/lessonsDB");
 const router = express.Router();
 
 // Route to get all lessons
-router.get("/lessons", (req, res) => {
+router.get("/", (req, res) => {
   console.log("Received GET request to fetch all lessons.");
 
   lessonsDB.getAllLessons((err, lessons) => {

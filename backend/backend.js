@@ -1,18 +1,25 @@
 const express = require("express");
 const session = require("express-session");
-const authRoutes = require("./routes/authRoutes");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const usersRoutes = require("./routes/usersRoutes");
 const lessonsRoutes = require("./routes/lessonsRoutes");
 
 const cookieParser = require('cookie-parser');
-const port = 5000;
-
+const port = 5001;
 
 const app = express();
 
 app.use(cookieParser());
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Настройка CORS для разрешения всех источников
+app.use(cors({
+  origin: 'http://localhost:3000', // Разрешить все источники
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешить все методы
+  allowedHeaders: ['Content-Type', 'Authorization'] // Разрешить заголовки
+}));
 
 app.use(session({
   secret: "your_secret_key",
@@ -31,7 +38,6 @@ app.get('/protected', (req, res) => {
   }
 });
 
-
 // Middleware function
 const logRequest = (req, res, next) => {
   console.log(`Received a ${req.method} request from ${req.ip}`);
@@ -41,7 +47,7 @@ const logRequest = (req, res, next) => {
 // Use the middleware
 app.use(logRequest);
 
-app.use("/auth", authRoutes);
+app.use("/auth", usersRoutes);
 app.use("/lessons", lessonsRoutes);
 
 // General Error Handling
@@ -60,4 +66,8 @@ app.get("/", (req, res) => {
 app.use((req, res) => {
   console.log(`Unhandled route accessed: ${req.method} ${req.originalUrl}`);
   res.status(404).send({ error: "Not Found" });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
