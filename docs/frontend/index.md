@@ -20,7 +20,7 @@ template engine to render views.
 
 ### 1. Importing Modules
 
-```javascript
+```js
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
@@ -35,7 +35,7 @@ const port = 3000;
 
 ### 2. Initialize Express Application
 
-```javascript
+```js
 const app = express();
 ```
 
@@ -44,7 +44,7 @@ const app = express();
 
 ### 3. Middleware Configuration
 
-```javascript
+```js
 app.use(bodyParser.json());
 ```
 
@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 
 ### 4. Set View Engine and Views Directory
 
-```javascript
+```js
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "./views"));
 ```
@@ -65,7 +65,7 @@ app.set("views", path.join(__dirname, "./views"));
 
 ### 5. Serve Static Files
 
-```javascript
+```js
 app.use(express.static(path.join(__dirname, "./")));
 ```
 
@@ -74,7 +74,7 @@ app.use(express.static(path.join(__dirname, "./")));
 
 ### 6. Custom Middleware
 
-```javascript
+```js
 const logRequest = (req, res, next) => {
   console.log(`Received a ${req.method} request from ${req.ip}`);
   next();
@@ -89,7 +89,7 @@ app.use(logRequest);
 
 ### 7. Route Configuration
 
-```javascript
+```js
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -101,7 +101,7 @@ app.get("/", (req, res) => {
 
 ### 8. Start the Server
 
-```javascript
+```js
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

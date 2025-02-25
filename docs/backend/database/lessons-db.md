@@ -54,7 +54,7 @@ details as input and inserts them into the `lessons` table.
 
 #### Usage
 
-```javascript
+```js
 lessonsDB.createLesson(
   title,
   description,
@@ -90,7 +90,7 @@ This function retrieves all lessons from the database.
 
 #### Usage
 
-```javascript
+```js
 lessonsDB.getAllLessons((err, rows) => {
   if (err) {
     console.log("Error fetching lessons:", err);
@@ -118,7 +118,7 @@ This function retrieves a specific lesson by its `id`.
 
 #### Usage
 
-```javascript
+```js
 lessonsDB.getLessonById(lessonId, (err, row) => {
   if (err) {
     console.log("Error fetching lesson:", err);
@@ -155,7 +155,7 @@ takes new values for the lesson and updates the corresponding fields in the
 
 #### Usage
 
-```javascript
+```js
 lessonsDB.updateLesson(
   lessonId,
   title,
@@ -197,7 +197,7 @@ This function deletes a lesson from the database by its `id`.
 
 #### Usage
 
-```javascript
+```js
 lessonsDB.deleteLesson(lessonId, (err, changes) => {
   if (err) {
     console.log("Error deleting lesson:", err);

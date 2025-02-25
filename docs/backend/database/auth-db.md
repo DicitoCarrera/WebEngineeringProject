@@ -41,7 +41,7 @@ password
 
 #### **Example Usage**
 
-```javascript
+```js
 usersDB.createUser(
   "johndoe",
   "john@example.com",
@@ -73,7 +73,7 @@ Retrieves a user from the database by their username.
 
 #### **Example Usage**
 
-```javascript
+```js
 usersDB.getUserByUsername("johndoe", (err, user) => {
   if (err) {
     console.error(err);
@@ -104,7 +104,7 @@ Retrieves a user from the database by their unique `id`.
 
 #### **Example Usage**
 
-```javascript
+```js
 usersDB.getUserById(1, (err, user) => {
   if (err) {
     console.error(err);
@@ -138,7 +138,7 @@ Updates a user's profile information (username, email, password) in the database
 
 #### **Example Usage**
 
-```javascript
+```js
 usersDB.updateUserProfile(
   1,
   "newusername",
@@ -205,7 +205,7 @@ execution for handling results.
 
 Here is an example of how to use the `usersDB.js` module in your Express routes:
 
-```javascript
+```js
 const usersDB = require("../database/users/usersDB");
 
 // Example usage of createUser function

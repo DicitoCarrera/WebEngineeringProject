@@ -29,7 +29,7 @@ routes are used in the backend service:
 
 The server is initialized using the Express framework:
 
-```javascript
+```js
 const app = express();
 ```
 
@@ -37,26 +37,26 @@ const app = express();
 
 **cookieParser**: Parses cookies from incoming requests.
 
-```javascript
+```js
 app.use(cookieParser());
 ```
 
 **bodyParser.urlencoded**: Parses URL-encoded bodies (e.g., form submissions).
 
-```javascript
+```js
 app.use(bodyParser.urlencoded({ extended: false }));
 ```
 
 **bodyParser.json**: Parses incoming requests with JSON payloads.
 
-```javascript
+```js
 app.use(bodyParser.json());
 ```
 
 **cors**: Configures CORS to allow requests from `http://localhost:3000` with
 specific HTTP methods and headers.
 
-```javascript
+```js
 app.use(cors({
   origin: "http://localhost:3000",
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -67,7 +67,7 @@ app.use(cors({
 **session**: Initializes session handling using express-session. It uses a
 secret key for encrypting the session data and stores session data in memory.
 
-```javascript
+```js
 app.use(session({
   secret: "your_secret_key",
   resave: false,
@@ -84,7 +84,7 @@ registration.
 **lessonsRoutes**: Handles routes related to lessons, like retrieving and
 managing lessons.
 
-```javascript
+```js
 app.use("/auth", usersRoutes);
 app.use("/lessons", lessonsRoutes);
 ```
@@ -94,7 +94,7 @@ app.use("/lessons", lessonsRoutes);
 A sample protected route (`/protected`) is defined. The route checks if the user
 is authenticated by verifying the existence of a session user:
 
-```javascript
+```js
 app.get("/protected", (req, res) => {
   if (req.session.user) {
     res.send("Welcome to the protected area");
@@ -113,7 +113,7 @@ Otherwise, it sends a 401 Unauthorized error.
 A custom middleware function is defined to log each incoming request, including
 the HTTP method and the IP address of the requester.
 
-```javascript
+```js
 const logRequest = (req, res, next) => {
   console.log(`Received a ${req.method} request from ${req.ip}`);
   next();
@@ -128,7 +128,7 @@ This middleware is applied to all incoming requests by using
 A general error handler is defined to catch any internal server errors and send
 a response to the client.
 
-```javascript
+```js
 app.use((err, req, res, next) => {
   console.error("An error occurred:", err.message);
   res.status(500).send({ error: "Internal Server Error" });
@@ -137,7 +137,7 @@ app.use((err, req, res, next) => {
 
 Additionally, there is an error handler for unhandled routes:
 
-```javascript
+```js
 app.use((req, res) => {
   console.log(`Unhandled route accessed: ${req.method} ${req.originalUrl}`);
   res.status(404).send({ error: "Not Found" });
@@ -148,7 +148,7 @@ app.use((req, res) => {
 
 A test route is provided to verify if the server is running properly:
 
-```javascript
+```js
 app.get("/", (req, res) => {
   console.log("Request received at root endpoint.");
   res.send("Backend is running!");
@@ -160,7 +160,7 @@ app.get("/", (req, res) => {
 Finally, the Express server is configured to listen on port `5001`, and logs a
 message when the server starts:
 
-```javascript
+```js
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
