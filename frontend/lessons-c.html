@@ -178,13 +178,13 @@
     <script src="assets/js/main.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        fetch("http://localhost:5000/lessons")
+        fetch("http://localhost:5001/lessons")
           .then((response) => response.json())
           .then((data) => {
             const lessonsContainer = document.getElementById("main");
 
             data.forEach((lesson) => {
-              if (lesson.language === "C") {
+              if (lesson.language === "c") {
                 const lessonElement = document.createElement("article");
                 lessonElement.classList.add("mini-post");
                 lessonElement.innerHTML = `

@@ -17,11 +17,11 @@ html
               a(href='#') Courses
               ul.dropdown
                 li
-                  a(href='lessons-python.html') Python
+                  a(href='lessons-Python.html') Python
                 li
-                  a(href='lessons-java.html') Java
+                  a(href='lessons-Java.html') Java
                 li
-                  a(href='lessons-c.html') C
+                  a(href='lessons-C.html') C
             li
               a(href='about-us.html') About us
             li
@@ -69,24 +69,24 @@ html
             article.mini-post
               header
                 h3
-                  a(href='lessons-python.html') Python Made Easy: Start Your Coding Journey
+                  a(href='lessons-Python.html') Python Made Easy: Start Your Coding Journey
                 time.published(datetime='2025-02-21') February 21, 2025
-              a.image(href='lessons-python.html')
-                img(src='images/lessons-python.jpg', alt='')
+              a.image(href='lessons-Python.html')
+                img(src='images/lessons-Python.jpg', alt='')
             article.mini-post
               header
                 h3
-                  a(href='lessons-java.html') Mastering Java: From Basics to Advanced
+                  a(href='lessons-Java.html') Mastering Java: From Basics to Advanced
                 time.published(datetime='2025-02-21') February 21, 2025
-              a.image(href='lessons-java.html')
-                img(src='images/lessons-java.webp', alt='')
+              a.image(href='lessons-Java.html')
+                img(src='images/lessons-Java.webp', alt='')
             article.mini-post
               header
                 h3
-                  a(href='lessons-c.html') C Programming Unlocked: Build Powerful Applications
+                  a(href='lessons-C.html') C Programming Unlocked: Build Powerful Applications
                 time.published(datetime='2025-02-12') February 12, 2025
-              a.image(href='lessons-c.html')
-                img(src='images/lessons-c.jpg', alt='')
+              a.image(href='lessons-C.html')
+                img(src='images/lessons-C.jpg', alt='')
         // Posts List
         section
           ul.posts
@@ -158,7 +158,7 @@ html
               loginButton.href = 'profile.html';
           }
 
-          fetch("http://localhost:5000/lessons")
+          fetch("http://localhost:5001/lessons")
               .then(response => response.json())
               .then(data => {
                   const lessonsContainer = document.getElementById("lessons-container");

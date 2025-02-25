@@ -96,7 +96,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const authorName = urlParams.get("name");
 
-        fetch("http://localhost:5000/lessons")
+        fetch("http://localhost:5001/lessons")
           .then((response) => response.json())
           .then((data) => {
             const lessonsContainer = document.getElementById(
