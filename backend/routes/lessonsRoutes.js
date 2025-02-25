@@ -3,7 +3,7 @@ const lessonsDB = require("../database/lessons/lessonsDB");
 const router = express.Router();
 
 // Route to get all lessons
-router.get("/lessons", (req, res) => {
+router.get("/", (req, res) => {
   console.log("Received GET request to fetch all lessons.");
 
   lessonsDB.getAllLessons((err, lessons) => {
@@ -23,7 +23,7 @@ router.get("/lessons", (req, res) => {
 });
 
 // Route to get a single lesson by ID
-router.get("/lessons/:id", (req, res) => {
+router.get("/:id", (req, res) => {
   const lessonId = req.params.id;
   console.log(`Received GET request to fetch lesson with ID: ${lessonId}`);
 
@@ -46,7 +46,7 @@ router.get("/lessons/:id", (req, res) => {
 });
 
 // Route to create a new lesson
-router.post("/lessons", (req, res) => {
+router.post("/", (req, res) => {
   const { title, description, date, teacher, language, explanation, content } =
     req.body;
   console.log(
@@ -92,7 +92,7 @@ router.post("/lessons", (req, res) => {
 });
 
 // Route to update a lesson by ID
-router.put("/lessons/:id", (req, res) => {
+router.put("/:id", (req, res) => {
   const lessonId = req.params.id;
   const { title, description, date, teacher, language, explanation, content } =
     req.body;
@@ -145,7 +145,7 @@ router.put("/lessons/:id", (req, res) => {
 });
 
 // Route to delete a lesson by ID
-router.delete("/lessons/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
   const lessonId = req.params.id;
   console.log(`Received DELETE request to delete lesson with ID: ${lessonId}`);
 

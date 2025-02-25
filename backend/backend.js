@@ -24,17 +24,17 @@ app.use(
 );
 
 // Log when the server starts
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
 });
 
 // Import routes
-const usersRoutes = require("./routes/usersRoute");
-const lessonsRoutes = require("./routes/lessonsRoute");
+const usersRoutes = require("./routes/usersRoutes");
+const lessonsRoutes = require("./routes/lessonsRoutes");
 
 // Routes
-app.use("/api/users", usersRoutes);
-app.use("/api/lessons", lessonsRoutes);
+app.use("/users", usersRoutes);
+app.use("/lessons", lessonsRoutes);
 
 // General Error Handling
 app.use((err, req, res, next) => {

@@ -130,7 +130,7 @@ Project/WebEngineeringProject/frontend/register.html -->
           const formData = new FormData(event.target);
           const data = Object.fromEntries(formData.entries());
 
-          fetch("http://localhost:5000/auth/register", {
+          fetch("http://localhost:5000/users/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
