@@ -115,11 +115,7 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
 
-<<<<<<< HEAD
-            fetch("http://localhost:5000/users/login", {
-=======
             fetch("http://localhost:5001/auth/login", {
->>>>>>> 1148b0f (switched port to 5001 and fixed some bugs)
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

@@ -7,7 +7,7 @@ services:
     build:
       context: ./backend # Path to the backend directory
     ports:
-      - "5000:5000" # Expose the backend app on port 5000
+      - "5001:5001" # Expose the backend app on port 5001
     environment:
       JWT_SECRET: your_jwt_secret # Secret for JWT token-based authentication
     restart: always # Always restart the service if it fails or stops

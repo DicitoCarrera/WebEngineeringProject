@@ -170,11 +170,7 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Fetch user data and populate the form
-<<<<<<< HEAD
-        fetch("http://localhost:5000/users/profile")
-=======
         fetch("http://localhost:5001/auth/profile")
->>>>>>> 1148b0f (switched port to 5001 and fixed some bugs)
           .then((response) => {
             if (!response.ok) {
               throw new Error("Not authenticated");
@@ -197,11 +193,7 @@
             const formData = new FormData(event.target);
             const data = Object.fromEntries(formData.entries());
 
-<<<<<<< HEAD
-            fetch("http://localhost:5000/users/profile", {
-=======
             fetch("http://localhost:5001/auth/profile", {
->>>>>>> 1148b0f (switched port to 5001 and fixed some bugs)
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
@@ -233,11 +225,7 @@
           "click",
           function (event) {
             event.preventDefault();
-<<<<<<< HEAD
-            fetch("http://localhost:5000/users/logout", {
-=======
             fetch("http://localhost:5001/auth/logout", {
->>>>>>> 1148b0f (switched port to 5001 and fixed some bugs)
               method: "POST",
             })
               .then((response) => response.json())

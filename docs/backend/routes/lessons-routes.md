@@ -1,10 +1,14 @@
-# Lessons Routes Documentation
+# Lessons Routes
 
-This document provides an overview of the lessons routes in the application. These routes handle CRUD operations (Create, Read, Update, and Delete) for managing lessons in the database. The routes are defined using Express.js and interact with a SQLite database.
+This document provides an overview of the lessons routes in the application.
+These routes handle CRUD operations (Create, Read, Update, and Delete) for
+managing lessons in the database. The routes are defined using Express.js and
+interact with a SQLite database.
 
 ## Routes Overview
 
-The routes in this section are part of the **lessonsRoutes** and are responsible for managing lessons in the system. The following operations are supported:
+The routes in this section are part of the **lessonsRoutes** and are responsible
+for managing lessons in the system. The following operations are supported:
 
 - **POST /lessons**: Create a new lesson.
 - **GET /lessons**: Retrieve all lessons.
@@ -16,9 +20,12 @@ The routes in this section are part of the **lessonsRoutes** and are responsible
 
 ### 1. **POST /lessons**
 
-Creates a new lesson by accepting `title`, `description`, `date`, `teacher`, `language`, `explanation`, and `content`. This route inserts the provided lesson data into the database.
+Creates a new lesson by accepting `title`, `description`, `date`, `teacher`,
+`language`, `explanation`, and `content`. This route inserts the provided lesson
+data into the database.
 
-#### Request:
+#### Request
+
 - **Method**: `POST`
 - **Body**:
   - `title`: The title of the lesson (string).
@@ -29,16 +36,20 @@ Creates a new lesson by accepting `title`, `description`, `date`, `teacher`, `la
   - `explanation`: Explanation or summary of the lesson (string).
   - `content`: The content of the lesson (string).
 
-#### Logic:
-1. The provided lesson data is inserted into the `lessons` table in the database.
+#### Logic
 
-#### Response:
+1. The provided lesson data is inserted into the `lessons` table in the
+   database.
+
+#### Response
+
 - **Status**: `201 Created` if successful.
 - **Body**:
   - `id`: The ID of the newly created lesson.
   - `message`: Success message indicating the lesson was created.
 
-#### Example:
+#### Example
+
 ```json
 {
   "id": 1,
@@ -46,8 +57,10 @@ Creates a new lesson by accepting `title`, `description`, `date`, `teacher`, `la
 }
 ```
 
-#### Error Responses:
-- **500 Internal Server Error**: If an error occurs while interacting with the database.
+#### Error Responses
+
+- **500 Internal Server Error**: If an error occurs while interacting with the
+  database.
 
 ---
 
@@ -55,17 +68,21 @@ Creates a new lesson by accepting `title`, `description`, `date`, `teacher`, `la
 
 Retrieves all lessons from the database. This route returns a list of lessons.
 
-#### Request:
+#### Request
+
 - **Method**: `GET`
 
-#### Logic:
+#### Logic
+
 1. The route retrieves all records from the `lessons` table.
 
-#### Response:
+#### Response
+
 - **Status**: `200 OK` if successful.
 - **Body**: A list of all lessons.
 
-#### Example:
+#### Example
+
 ```json
 [
   {
@@ -91,28 +108,35 @@ Retrieves all lessons from the database. This route returns a list of lessons.
 ]
 ```
 
-#### Error Responses:
-- **500 Internal Server Error**: If an error occurs while retrieving lessons from the database.
+#### Error Responses
+
+- **500 Internal Server Error**: If an error occurs while retrieving lessons
+  from the database.
 
 ---
 
 ### 3. **GET /lessons/:id**
 
-Retrieves a specific lesson by its ID. This route returns the lesson data for a given ID.
+Retrieves a specific lesson by its ID. This route returns the lesson data for a
+given ID.
 
-#### Request:
+#### Request
+
 - **Method**: `GET`
 - **Parameters**:
   - `id`: The ID of the lesson to retrieve (integer).
 
-#### Logic:
+#### Logic
+
 1. The route looks for the lesson in the `lessons` table by its `id`.
 
-#### Response:
+#### Response
+
 - **Status**: `200 OK` if successful.
 - **Body**: The lesson data.
 
-#### Example:
+#### Example
+
 ```json
 {
   "id": 1,
@@ -126,17 +150,22 @@ Retrieves a specific lesson by its ID. This route returns the lesson data for a 
 }
 ```
 
-#### Error Responses:
+#### Error Responses
+
 - **404 Not Found**: If the lesson with the specified ID does not exist.
-- **500 Internal Server Error**: If an error occurs while retrieving the lesson from the database.
+- **500 Internal Server Error**: If an error occurs while retrieving the lesson
+  from the database.
 
 ---
 
 ### 4. **PUT /lessons/:id**
 
-Updates an existing lesson by its ID. This route allows you to modify the `title`, `description`, `date`, `teacher`, `language`, `explanation`, and `content` of a lesson.
+Updates an existing lesson by its ID. This route allows you to modify the
+`title`, `description`, `date`, `teacher`, `language`, `explanation`, and
+`content` of a lesson.
 
-#### Request:
+#### Request
+
 - **Method**: `PUT`
 - **Parameters**:
   - `id`: The ID of the lesson to update (integer).
@@ -149,59 +178,75 @@ Updates an existing lesson by its ID. This route allows you to modify the `title
   - `explanation`: The new explanation of the lesson (string).
   - `content`: The new content of the lesson (string).
 
-#### Logic:
+#### Logic
+
 1. The route looks for the lesson in the `lessons` table by its `id`.
 2. If the lesson is found, it updates the lesson with the provided details.
 
-#### Response:
+#### Response
+
 - **Status**: `200 OK` if successful.
 - **Body**:
   - `message`: Success message indicating the lesson was updated.
 
-#### Example:
+#### Example
+
 ```json
 {
   "message": "Lesson updated successfully"
 }
 ```
 
-#### Error Responses:
+#### Error Responses
+
 - **404 Not Found**: If the lesson with the specified ID does not exist.
-- **500 Internal Server Error**: If an error occurs while updating the lesson in the database.
+- **500 Internal Server Error**: If an error occurs while updating the lesson in
+  the database.
 
 ---
 
 ### 5. **DELETE /lessons/:id**
 
-Deletes a specific lesson by its ID. This route removes the lesson from the database.
+Deletes a specific lesson by its ID. This route removes the lesson from the
+database.
 
-#### Request:
+#### Request
+
 - **Method**: `DELETE`
 - **Parameters**:
   - `id`: The ID of the lesson to delete (integer).
 
-#### Logic:
+#### Logic
+
 1. The route looks for the lesson in the `lessons` table by its `id`.
 2. If the lesson is found, it is deleted from the table.
 
-#### Response:
+#### Response
+
 - **Status**: `200 OK` if successful.
 - **Body**:
   - `message`: Success message indicating the lesson was deleted.
 
-#### Example:
+#### Example
+
 ```json
 {
   "message": "Lesson deleted successfully"
 }
 ```
 
-#### Error Responses:
+#### Error Responses
+
 - **404 Not Found**: If the lesson with the specified ID does not exist.
-- **500 Internal Server Error**: If an error occurs while deleting the lesson from the database.
+- **500 Internal Server Error**: If an error occurs while deleting the lesson
+  from the database.
 
 ---
 
 ## Conclusion
 
-These routes provide essential CRUD operations for managing lessons in the application. They enable users to create, retrieve, update, and delete lesson data in a simple and efficient manner. The interactions with the database are handled using prepared statements to prevent SQL injection and ensure data integrity.
+These routes provide essential CRUD operations for managing lessons in the
+application. They enable users to create, retrieve, update, and delete lesson
+data in a simple and efficient manner. The interactions with the database are
+handled using prepared statements to prevent SQL injection and ensure data
+integrity.

@@ -5,7 +5,7 @@ const cors = require("cors");
 const usersRoutes = require("./routes/usersRoutes");
 const lessonsRoutes = require("./routes/lessonsRoutes");
 
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const port = 5001;
 
 const app = express();
@@ -14,24 +14,10 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-<<<<<<< HEAD
-// Log when the server starts
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
-});
-
-// Import routes
-const usersRoutes = require("./routes/usersRoutes");
-const lessonsRoutes = require("./routes/lessonsRoutes");
-
-// Routes
-app.use("/users", usersRoutes);
-=======
-// Настройка CORS для разрешения всех источников
 app.use(cors({
-  origin: 'http://localhost:3000', // Разрешить все источники
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Разрешить все методы
-  allowedHeaders: ['Content-Type', 'Authorization'] // Разрешить заголовки
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 app.use(session({
@@ -42,12 +28,12 @@ app.use(session({
 }));
 
 // Protected route
-app.get('/protected', (req, res) => {
+app.get("/protected", (req, res) => {
   // Check if user is authenticated
   if (req.session.user) {
-    res.send('Welcome to the protected area');
+    res.send("Welcome to the protected area");
   } else {
-    res.status(401).send('Unauthorized access');
+    res.status(401).send("Unauthorized access");
   }
 });
 
@@ -61,7 +47,6 @@ const logRequest = (req, res, next) => {
 app.use(logRequest);
 
 app.use("/auth", usersRoutes);
->>>>>>> 1148b0f (switched port to 5001 and fixed some bugs)
 app.use("/lessons", lessonsRoutes);
 
 // General Error Handling
