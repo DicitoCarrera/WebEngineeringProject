@@ -1,27 +1,22 @@
 site_name: My site
+
 site_url: https://mydomain.org/
+
 theme:
   language: en
+
   name: material
+
   palette:
     # Dark Mode
     - scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Dark mode
       primary: green
       accent: deep purple
 
-    # Light Mode
-    - scheme: default
-      toggle:
-        icon: material/weather-night
-        name: Light mode
-      primary: blue
-      accent: deep orange
   font:
     text: Merriweather Sans
     code: Red Hat Mono
+
   features:
     - navigation.footer
     - navigation.instant
@@ -32,9 +27,12 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
+
   icon:
     logo: fontawesome/solid/w
+
   logo: assets/logo.png
+
   favicon: assets/favicon.ico
 
 plugins:
@@ -42,6 +40,7 @@ plugins:
 
 markdown_extensions:
   - attr_list
+  - admonition
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -52,19 +51,9 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
-  - admonition
   - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
 
 extra:
   #   social:

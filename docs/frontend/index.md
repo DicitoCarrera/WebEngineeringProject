@@ -1,87 +1,146 @@
-# Technical Documentation for Application Infrastructure
+# Frontend Service
 
 ## Overview
 
-This documentation outlines the technical details for setting up the
-infrastructure of an application using Docker Compose. The infrastructure
-consists of two primary services:
+`frontend.js` is a Node.js server-side application using the **Express**
+framework. It serves the home page (`index.pug`) and serves static files such as
+CSS, JavaScript, and images. This server listens on port 3000 and uses the Pug
+template engine to render views.
 
-- **Backend** - A Node.js-based backend service.
-- **Frontend** - A React or Node.js-based frontend service.
+## Dependencies
 
-Both services are containerized using Docker and orchestrated using Docker
-Compose. The services communicate internally on the same Docker network and
-expose ports for external access.
+- **`express`:** A minimal web application framework for Node.js used to handle
+  routing, middleware, and request/response handling.
+- **`path`:** A core Node.js module used to handle and transform file paths.
+- **`body-parser`:** A middleware used to parse incoming request bodies in JSON
+  format.
+- **`pug`:** A templating engine for rendering dynamic HTML pages on the server.
 
-## Docker Compose Setup
+## Code Breakdown
 
-The `docker-compose.yml` file provides the configuration to define, configure,
-and run multi-container Docker applications. The file below contains
-configurations for the `node-backend` and `node-frontend` services.
+### 1. Importing Modules
 
-### Key Elements
+```javascript
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+const port = 3000;
+```
 
-- **version**: Specifies the version of the Docker Compose syntax.
-- **services**: Defines the services (containers) in the application.
-  - `node-backend`: The backend service, configured to run on port 5000.
-  - `node-frontend`: The frontend service, configured to run on port 3000.
-- **container_name**: Specifies the name of the container within Docker.
-- **build.context**: Defines the directory containing the Dockerfile for
-  building the respective container.
-- **ports**: Exposes container ports to the host machine.
-- **environment**: Defines environment variables for the services.
-- **restart**: Ensures services are automatically restarted in case of failure.
+- `express`: Imports the Express framework to handle HTTP requests and
+  server-side routing.
+- `path`: Provides utilities for working with file and directory paths.
+- `body-parser`: Used to parse incoming JSON data in HTTP requests.
+- `port`: Sets the port number on which the application will listen (3000).
 
-## Backend Dockerfile
+### 2. Initialize Express Application
 
-The Dockerfile for the backend service specifies the steps needed to create the
-backend image. Below is the detailed configuration:
+```javascript
+const app = express();
+```
 
-### Breakdown
+- Creates an instance of an Express application to handle routing and
+  middleware.
 
-- `FROM node`: Uses the official Node.js image as the base for the container.
-- `WORKDIR /app`: Sets the working directory inside the container to `/app`.
-- `COPY package.json /app`: Copies the `package.json` file into the container to
-  install dependencies.
-- `RUN npm install`: Installs the dependencies listed in `package.json`.
-- `COPY . /app`: Copies the rest of the backend files into the container.
-- `CMD ["node", "backend.js"]`: The entry point for running the backend
-  application, using the `backend.js` file.
+### 3. Middleware Configuration
 
-## Frontend Dockerfile
+```javascript
+app.use(bodyParser.json());
+```
 
-The Dockerfile for the frontend service specifies the steps needed to create the
-frontend image. Below is the detailed configuration:
+- Configures Express to use `body-parser` to parse JSON bodies in incoming HTTP
+  requests.
 
-### Breakdown
+### 4. Set View Engine and Views Directory
 
-- `FROM node`: Uses the official Node.js image as the base for the container.
-- `WORKDIR /app`: Sets the working directory inside the container to `/app`.
-- `COPY package.json /app`: Copies the `package.json` file into the container to
-  install dependencies.
-- `RUN npm install`: Installs the dependencies listed in `package.json`.
-- `COPY . /app`: Copies the rest of the frontend files into the container.
-- `CMD ["node", "frontend.js"]`: The entry point for running the frontend
-  application, using the `frontend.js` file.
+```javascript
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "./views"));
+```
 
-## Service Configuration
+- Sets **Pug** as the view engine to render `.pug` files.
+- Configures the views directory where Pug templates are stored. The `__dirname`
+  points to the current directory where `frontend.js` is located, and it joins
+  the path to the `views` folder.
 
-### Backend Service Configuration
+### 5. Serve Static Files
 
-- **Container Name**: `backend`
-- **Build Context**: `./backend` (Path to the backend application directory)
-- **Ports**:
-  - Exposes port `5000` from the container to port `5000` on the host.
-- **Environment Variables**:
-  - `JWT_SECRET`: A secret key for signing and verifying JSON Web Tokens (JWTs).
-- **Restart Policy**: Always restart the service if it fails or stops
-  unexpectedly.
+```javascript
+app.use(express.static(path.join(__dirname, "./")));
+```
 
-### Frontend Service Configuration
+- Uses `express.static` middleware to serve static files (CSS, JavaScript,
+  images) from the root directory.
 
-- **Container Name**: `frontend`
-- **Build Context**: `./frontend` (Path to the frontend application directory)
-- **Ports**:
-  - Exposes port `3000` from the container to port `3000` on the host.
-- **Restart Policy**: Always restart the service if it fails or stops
-  unexpectedly.
+### 6. Custom Middleware
+
+```javascript
+const logRequest = (req, res, next) => {
+  console.log(`Received a ${req.method} request from ${req.ip}`);
+  next();
+};
+app.use(logRequest);
+```
+
+- Defines a middleware function `logRequest` that logs the type of HTTP request
+  (GET, POST, etc.) and the IP address of the requester.
+- The `next()` function passes control to the next middleware function or route
+  handler.
+
+### 7. Route Configuration
+
+```javascript
+app.get("/", (req, res) => {
+  res.render("index");
+});
+```
+
+- Configures a route for the root URL (`/`).
+- When the root URL is requested, the server will render the `index.pug`
+  template.
+
+### 8. Start the Server
+
+```javascript
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+```
+
+- Starts the Express server on the specified port (`3000`).
+- Logs a message to the console indicating that the server is running and
+  accessible via `http://localhost:3000`.
+
+## How It Works
+
+1. **Routing:** When a user visits `http://localhost:3000`, the server responds
+   with the `index.pug` template, which is rendered into HTML.
+2. **Serving Static Files:** The server serves static files such as CSS, images,
+   and JavaScript from the root directory, making them accessible in the
+   browser.
+3. **Logging Requests:** Each incoming HTTP request is logged, including the
+   type of request and the IP address of the requester.
+4. **Rendering Views:** Pug templates are used to dynamically render the HTML
+   pages on the server side, allowing for dynamic content generation.
+
+## Usage
+
+1. Install the required dependencies by running the following command:
+
+```bash
+npm install express path body-parser pug
+```
+
+2. Start the server by running:
+
+```bash
+node frontend.js
+```
+
+3. Visit `http://localhost:3000` in your browser to view the home page.
+
+## Conclusion
+
+`frontend.js` sets up a simple Node.js server using Express, which renders a
+dynamic home page using Pug and serves static files. It logs incoming requests,
+making it easier to debug and monitor server activity.

@@ -58,7 +58,10 @@ router.post("/login", (req, res) => {
 
       console.log(`User ${username} logged in successfully.`);
       req.session.userId = user.id;
-      return res.send({ message: "Login successful", authToken: req.session.userId });
+      return res.send({
+        message: "Login successful",
+        authToken: req.session.userId,
+      });
     } catch (error) {
       console.error("Error comparing password:", error.message);
       return res.status(500).send({ error: "Error comparing password" });
