@@ -1,50 +1,55 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const session = require("express-session");
-const authRoutes = require("./routes/authRoutes");
-const lessonsRoutes = require("./routes/lessonsRoutes");
-
-const cookieParser = require('cookie-parser');
-const port = 5000;
-
-
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 
-app.use(cookieParser());
+// Middleware Setup
+app.use(cors());
+app.use(bodyParser.json()); // To parse JSON bodies
+app.use(bodyParser.urlencoded({ extended: true })); // To parse URL-encoded bodies
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// Session setup
+app.use(
+  session({
+    secret: "your_secret_key", // Secret key for encrypting session
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false, // Should be true if using HTTPS
+      httpOnly: true, // Helps mitigate cross-site scripting (XSS)
+      maxAge: 600000, // Session expiration time in ms (e.g., 10 minutes)
+    },
+  }),
+);
 
-app.use(session({
-  secret: "your_secret_key",
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }, // Set to true if using HTTPS
-}));
-
-// Protected route
-app.get('/protected', (req, res) => {
-  // Check if user is authenticated
-  if (req.session.user) {
-    res.send('Welcome to the protected area');
-  } else {
-    res.status(401).send('Unauthorized access');
-  }
+// Log when the server starts
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
 });
 
+// Import routes
+const usersRoutes = require("./routes/usersRoute");
+const lessonsRoutes = require("./routes/lessonsRoute");
 
-// Middleware function
-const logRequest = (req, res, next) => {
-  console.log(`Received a ${req.method} request from ${req.ip}`);
-  next();
-};
+// Routes
+app.use("/api/users", usersRoutes);
+app.use("/api/lessons", lessonsRoutes);
 
-// Use the middleware
-app.use(logRequest);
+// General Error Handling
+app.use((err, req, res, next) => {
+  console.error("An error occurred:", err.message);
+  res.status(500).send({ error: "Internal Server Error" });
+});
 
-app.use("/auth", authRoutes);
-app.use("/lessons", lessonsRoutes);
+// Test Route (Optional, for initial debugging)
+app.get("/", (req, res) => {
+  console.log("Request received at root endpoint.");
+  res.send("Backend is running!");
+});
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// More advanced error handling for unhandled routes
+app.use((req, res) => {
+  console.log(`Unhandled route accessed: ${req.method} ${req.originalUrl}`);
+  res.status(404).send({ error: "Not Found" });
 });

@@ -12,6 +12,15 @@ app.set("views", path.join(__dirname, "./views"));
 
 app.use(express.static(path.join(__dirname, "./")));
 
+// Middleware function
+const logRequest = (req, res, next) => {
+  console.log(`Received a ${req.method} request from ${req.ip}`);
+  next();
+};
+
+// Use the middleware
+app.use(logRequest);
+
 app.get("/", (req, res) => {
   res.render("index");
 });
