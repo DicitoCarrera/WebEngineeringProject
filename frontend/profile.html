@@ -169,8 +169,20 @@
     <script src="assets/js/main.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        const authToken = localStorage.getItem("authToken");
+
+        if (!authToken) {
+          window.location.href = "login.html";
+          return;
+        }
+
         // Fetch user data and populate the form
-        fetch("http://localhost:5001/auth/profile")
+        fetch("http://localhost:5001/auth/profile", {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${authToken}`,
+          },
+        })
           .then((response) => {
             if (!response.ok) {
               throw new Error("Not authenticated");
@@ -197,6 +209,7 @@
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`,
               },
               body: JSON.stringify(data),
             })
@@ -207,8 +220,8 @@
                 } else {
                   document.getElementById("error-message").textContent =
                     result.error || "An error occurred";
-                  document.getElementById("error-message").style
-                    .display = "block";
+                  document.getElementById("error-message").style.display =
+                    "block";
                 }
               })
               .catch((error) => {
@@ -231,6 +244,7 @@
               .then((response) => response.json())
               .then((result) => {
                 alert(result.message);
+                localStorage.removeItem("authToken");
                 window.location.href = "login.html";
               })
               .catch((error) => console.error("Error:", error));

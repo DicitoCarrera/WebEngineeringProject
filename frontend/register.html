@@ -1,4 +1,3 @@
-Project/WebEngineeringProject/frontend/register.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -137,10 +136,10 @@ Project/WebEngineeringProject/frontend/register.html -->
             },
             body: JSON.stringify(data),
           })
-            .then((response) => response.text())
-            .then((message) => {
-              alert(message);
-              if (message === "User registered successfully") {
+            .then((response) => response.json())
+            .then((result) => {
+              alert(result.message);
+              if (result.message === "User registered successfully") {
                 window.location.href = "login.html";
               }
             })
