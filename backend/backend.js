@@ -1,27 +1,18 @@
 const express = require("express");
 const session = require("express-session");
-const cors = require("cors");
-const bodyParser = require("body-parser");
+const authRoutes = require("./routes/authRoutes");
+const lessonsRoutes = require("./routes/lessonsRoutes");
+
+const cookieParser = require('cookie-parser');
+const port = 5000;
+
+
 const app = express();
 
-// Middleware Setup
-app.use(cors());
-app.use(bodyParser.json()); // To parse JSON bodies
-app.use(bodyParser.urlencoded({ extended: true })); // To parse URL-encoded bodies
+app.use(cookieParser());
 
-// Session setup
-app.use(
-  session({
-    secret: "your_secret_key", // Secret key for encrypting session
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false, // Should be true if using HTTPS
-      httpOnly: true, // Helps mitigate cross-site scripting (XSS)
-      maxAge: 600000, // Session expiration time in ms (e.g., 10 minutes)
-    },
-  }),
-);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Log when the server starts
 app.listen(5000, () => {
