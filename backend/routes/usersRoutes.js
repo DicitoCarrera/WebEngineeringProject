@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
 
       console.log(`User ${username} logged in successfully.`);
       req.session.userId = user.id;
-      return res.send({ message: "Login successful" });
+      return res.send({ message: "Login successful", authToken: req.session.userId });
     } catch (error) {
       console.error("Error comparing password:", error.message);
       return res.status(500).send({ error: "Error comparing password" });
@@ -66,38 +66,36 @@ router.post("/login", (req, res) => {
   });
 });
 
-// Get the current user's profile
-router.get("/profile", (req, res) => {
-  if (!req.session.userId) {
-    console.log("User is not authenticated.");
+// Middleware to authenticate user using authToken
+const authenticateUser = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
     return res.status(401).send({ error: "Not authenticated" });
   }
 
-  console.log(`Fetching profile for user with ID: ${req.session.userId}`);
+  const authToken = authHeader.split(" ")[1];
+  if (!authToken) {
+    return res.status(401).send({ error: "Not authenticated" });
+  }
 
-  db.getUserById(req.session.userId, (err, user) => {
-    if (err) {
-      console.error("Error fetching user profile:", err.message);
-      return res.status(500).send({ error: err.message });
+  db.getUserById(authToken, (err, user) => {
+    if (err || !user) {
+      return res.status(401).send({ error: "Not authenticated" });
     }
 
-    if (!user) {
-      console.log(`User with ID ${req.session.userId} not found.`);
-      return res.status(404).send({ error: "User not found" });
-    }
-
-    console.log(`Returning profile for user ID ${req.session.userId}`);
-    return res.send(user);
+    req.user = user;
+    next();
   });
+};
+
+// Get the current user's profile
+router.get("/profile", authenticateUser, (req, res) => {
+  console.log(`Returning profile for user ID ${req.user.id}`);
+  return res.send(req.user);
 });
 
 // Update the current user's profile
-router.put("/profile", (req, res) => {
-  if (!req.session.userId) {
-    console.log("User is not authenticated.");
-    return res.status(401).send({ error: "Not authenticated" });
-  }
-
+router.put("/profile", authenticateUser, (req, res) => {
   const { username, email, currentPassword, newPassword } = req.body;
 
   if (!currentPassword) {
@@ -106,17 +104,17 @@ router.put("/profile", (req, res) => {
   }
 
   console.log(
-    `Attempting to update profile for user ID: ${req.session.userId}`,
+    `Attempting to update profile for user ID: ${req.user.id}`,
   );
 
-  db.getUserById(req.session.userId, async (err, user) => {
+  db.getUserById(req.user.id, async (err, user) => {
     if (err) {
       console.error("Error fetching user for profile update:", err.message);
       return res.status(500).send({ error: err.message });
     }
 
     if (!user) {
-      console.log(`User with ID ${req.session.userId} not found.`);
+      console.log(`User with ID ${req.user.id} not found.`);
       return res.status(404).send({ error: "User not found" });
     }
 
@@ -126,12 +124,12 @@ router.put("/profile", (req, res) => {
         user.password,
       );
       console.log(
-        `Password match status for user ID ${req.session.userId}: ${passwordMatch}`,
+        `Password match status for user ID ${req.user.id}: ${passwordMatch}`,
       );
 
       if (!passwordMatch) {
         console.log(
-          `Incorrect current password for user ID ${req.session.userId}`,
+          `Incorrect current password for user ID ${req.user.id}`,
         );
         return res.status(401).send({ error: "Current password is incorrect" });
       }
@@ -141,11 +139,11 @@ router.put("/profile", (req, res) => {
         : user.password;
 
       console.log(
-        `Password hashed successfully for user ID ${req.session.userId}`,
+        `Password hashed successfully for user ID ${req.user.id}`,
       );
 
       db.updateUserProfile(
-        req.session.userId,
+        req.user.id,
         username,
         email,
         hashedPassword,
@@ -156,7 +154,7 @@ router.put("/profile", (req, res) => {
           }
 
           console.log(
-            `User profile for ID ${req.session.userId} updated successfully.`,
+            `User profile for ID ${req.user.id} updated successfully.`,
           );
           return res.send({ message: "Profile updated successfully" });
         },
