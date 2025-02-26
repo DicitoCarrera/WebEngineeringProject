@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://LearningProgramming.de/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/backend/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/backend/database/auth-db/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/backend/database/lessons-db/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/backend/routes/auth-routes/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/backend/routes/lessons-routes/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/frontend/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+    <url>
+         <loc>https://LearningProgramming.de/infrastructure/</loc>
+         <lastmod>2025-02-26</lastmod>
+    </url>
+</urlset>
