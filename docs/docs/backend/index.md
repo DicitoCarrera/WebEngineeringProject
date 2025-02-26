@@ -53,12 +53,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 ```
 
-**cors**: Configures CORS to allow requests from `http://localhost:3000` with
+**cors**: Configures CORS to allow requests from `http://localhost:4000` with
 specific HTTP methods and headers.
 
 ```js
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://localhost:4000",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
