@@ -27,15 +27,15 @@ app.use(session({
   cookie: { secure: false }, // Set to true if using HTTPS
 }));
 
-// Protected route
-app.get("/protected", (req, res) => {
-  // Check if user is authenticated
-  if (req.session.user) {
-    res.send("Welcome to the protected area");
-  } else {
-    res.status(401).send("Unauthorized access");
-  }
-});
+// // Protected route
+// app.get("/protected", (req, res) => {
+//   // Check if user is authenticated
+//   if (req.session.user) {
+//     res.send("Welcome to the protected area");
+//   } else {
+//     res.status(401).send("Unauthorized access");
+//   }
+// });
 
 // Middleware function
 const logRequest = (req, res, next) => {

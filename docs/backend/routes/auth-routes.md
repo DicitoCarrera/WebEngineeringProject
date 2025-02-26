@@ -26,6 +26,7 @@ password is hashed before being stored in the database.
 #### Request
 
 - **Method**: `POST`
+
 - **Body**:
   - `username`: The username of the user (string).
   - `email`: The email address of the user (string).

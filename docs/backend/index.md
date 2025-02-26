@@ -89,21 +89,6 @@ app.use("/auth", usersRoutes);
 app.use("/lessons", lessonsRoutes);
 ```
 
-### Protected Route
-
-A sample protected route (`/protected`) is defined. The route checks if the user
-is authenticated by verifying the existence of a session user:
-
-```js
-app.get("/protected", (req, res) => {
-  if (req.session.user) {
-    res.send("Welcome to the protected area");
-  } else {
-    res.status(401).send("Unauthorized access");
-  }
-});
-```
-
 This route checks the session for an authenticated user. If the user is
 authenticated (i.e., `req.session.user` exists), it sends a welcome message.
 Otherwise, it sends a 401 Unauthorized error.

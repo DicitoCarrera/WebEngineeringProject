@@ -1,6 +1,6 @@
-site_name: My site
+site_name: Learning Programming
 
-site_url: https://mydomain.org/
+site_url: https://LearningProgramming.de/
 
 theme:
   language: en
@@ -23,9 +23,9 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-  font:
-    text: Merriweather Sans
-    code: Red Hat Mono
+  # font:
+  #   text: Merriweather Sans
+  #   code: Red Hat Mono
 
   features:
     - navigation.footer
@@ -67,6 +67,9 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.details
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra:
   #   social:
