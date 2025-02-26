@@ -59,9 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
               outputElement.innerText = "Error: " + error.message;
             }
           } else if (language === "python") {
-            // Используйте библиотеку Skulpt для выполнения Python кода
             console.log("Executing Python code with Skulpt");
-            outputElement.innerText = ""; // Очистите вывод перед выполнением
+            outputElement.innerText = "";
             if (typeof Sk === "undefined") {
               console.error("Skulpt is not defined");
             } else {

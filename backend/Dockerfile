@@ -14,8 +14,8 @@ RUN npm install
 COPY . .
 
 # # Rebuild bcrypt and sqlite3 to ensure compatibility with the current environment
-# RUN npm rebuild bcrypt --build-from-source
-# RUN npm rebuild sqlite3 --build-from-source
+RUN npm rebuild bcrypt --build-from-source
+RUN npm rebuild sqlite3 --build-from-source
 
 # Command to run the backend app
 CMD ["node", "backend.js"]
