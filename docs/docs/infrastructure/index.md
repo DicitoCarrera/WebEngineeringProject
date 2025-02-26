@@ -24,7 +24,7 @@ configurations for the `node-backend` and `node-frontend` services.
 - **`version`**: Specifies the version of the Docker Compose syntax.
 - **`services`**: Defines the services (containers) in the application.
   - `node-backend`: The backend service, configured to run on port 5001.
-  - `node-frontend`: The frontend service, configured to run on port 3000.
+  - `node-frontend`: The frontend service, configured to run on port 4000.
 - **`container_name`**: Specifies the name of the container within Docker.
 - **`build.context`**: Defines the directory containing the Dockerfile for
   building the respective container.
@@ -79,6 +79,6 @@ frontend image. Below is the detailed configuration:
 
 - **Container Name**: `frontend`
 - **Build Context**: `./frontend` (Path to the frontend application directory)
-- **Ports**: Exposes port `3000` from the container to port `3000` on the host.
+- **Ports**: Exposes port `4000` from the container to port `4000` on the host.
 - **Restart Policy**: Always restart the service if it fails or stops
   unexpectedly.

@@ -28,27 +28,22 @@
 
 	<Slide class="h-full place-content-center place-items-center">
 		<p class="text-8xl font-bold drop-shadow-sm">Demo!</p>
-		<!-- <img class="rounded-lg drop-shadow-sm" src="/nod-of-approval.gif" /> -->
 	</Slide>
 
 	<Slide class="h-full place-content-center place-items-center">
 		<p class="text-8xl font-bold drop-shadow-sm">Docs!</p>
-		<!-- <img class="rounded-lg drop-shadow-sm" src="/nod-of-approval.gif" /> -->
 	</Slide>
-
-  <!-- Slide 1: Introduction -->
+<!--
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-8xl font-bold drop-shadow-sm">Welcome to Our App!</p>
     <p class="text-4xl mt-4 drop-shadow-sm">An interactive web application with 3 main layers: Frontend, Backend, and Infrastructure</p>
   </Slide>
 
-  <!-- Slide 2: Frontend Overview -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Frontend Architecture</p>
     <p class="text-4xl mt-4 drop-shadow-sm">Built with Express and enhanced with Animotion for rich animations and interactions.</p>
   </Slide>
 
-  <!-- Slide 3: Animotion Features -->
   <Slide class="h-full place-content-center place-items-center">
     <Transition>
       <p class="text-5xl font-bold drop-shadow-sm">What is Animotion?</p>
@@ -59,13 +54,11 @@
     </Transition>
   </Slide>
 
-  <!-- Slide 4: Backend Overview -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Backend Architecture</p>
     <p class="text-4xl mt-4 drop-shadow-sm">Powered by Express.js, managing user sessions and API endpoints for lessons and authentication.</p>
   </Slide>
 
-  <!-- Slide 5: API Routes -->
   <Slide class="h-full place-content-center place-items-center">
     <Transition>
       <p class="text-5xl font-bold drop-shadow-sm">API Routes</p>
@@ -76,13 +69,11 @@
     </Transition>
   </Slide>
 
-  <!-- Slide 6: Docker Infrastructure -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Infrastructure with Docker</p>
     <p class="text-4xl mt-4 drop-shadow-sm">Docker Compose is used to manage both frontend and backend containers, ensuring high availability.</p>
   </Slide>
 
-  <!-- Slide 7: Architecture Diagram -->
   <Slide class="h-full place-content-center place-items-center">
     <Transition>
       <p class="text-5xl font-bold drop-shadow-sm">App Architecture Diagram</p>
@@ -92,13 +83,11 @@
     </Transition>
   </Slide>
 
-  <!-- Slide 8: Conclusion -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Conclusion</p>
     <p class="text-4xl mt-4 drop-shadow-sm">Our app provides a seamless, interactive experience with modern frontend animations, robust backend architecture, and containerized infrastructure.</p>
   </Slide>
 
-  <!-- Slide 1: Backend Code - Routes Setup -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Backend: Express Routes Setup</p>
     <Code
@@ -124,7 +113,6 @@
     />
   </Slide>
 
-  <!-- Slide 2: Backend Code - Middleware -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Backend: Middleware Setup</p>
     <Code
@@ -143,7 +131,6 @@
     />
   </Slide>
 
-  <!-- Slide 3: Frontend Code - View Engine and Middleware -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Frontend: View Engine & Middleware</p>
     <Code
@@ -164,7 +151,6 @@
     />
   </Slide>
 
-  <!-- Slide 4: Frontend Code - Request Logging -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Frontend: Logging Requests</p>
     <Code
@@ -183,7 +169,6 @@
     />
   </Slide>
 
-  <!-- Slide 5: Docker Compose Configuration -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Infrastructure: Docker Compose</p>
     <Code
@@ -211,16 +196,15 @@
             build:
               context: ./frontend
             ports:
-              - "3000:3000"
+              - "4000:4000"
             restart: always
       `}
       options={{ duration: 1000, stagger: 0.3 }}
     />
   </Slide>
 
-  <!-- Slide 6: Conclusion -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Conclusion</p>
     <p class="text-4xl mt-4 drop-shadow-sm">Our app integrates smooth animations, modular architecture, and a scalable infrastructure using Docker and Express.</p>
-  </Slide>
+  </Slide> -->
 </Presentation>

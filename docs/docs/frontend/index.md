@@ -4,7 +4,7 @@
 
 `frontend.js` is a Node.js server-side application using the **Express**
 framework. It serves the home page (`index.pug`) and serves static files such as
-CSS, JavaScript, and images. This server listens on port 3000 and uses the Pug
+CSS, JavaScript, and images. This server listens on port 4000 and uses the Pug
 template engine to render views.
 
 ## Dependencies
@@ -24,14 +24,14 @@ template engine to render views.
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const port = 3000;
+const port = 4000;
 ```
 
 - `express`: Imports the Express framework to handle HTTP requests and
   server-side routing.
 - `path`: Provides utilities for working with file and directory paths.
 - `body-parser`: Used to parse incoming JSON data in HTTP requests.
-- `port`: Sets the port number on which the application will listen (3000).
+- `port`: Sets the port number on which the application will listen (4000).
 
 ### 2. Initialize Express Application
 
@@ -107,13 +107,13 @@ app.listen(port, () => {
 });
 ```
 
-- Starts the Express server on the specified port (`3000`).
+- Starts the Express server on the specified port (`4000`).
 - Logs a message to the console indicating that the server is running and
-  accessible via `http://localhost:3000`.
+  accessible via `http://localhost:4000`.
 
 ## How It Works
 
-1. **Routing:** When a user visits `http://localhost:3000`, the server responds
+1. **Routing:** When a user visits `http://localhost:4000`, the server responds
    with the `index.pug` template, which is rendered into HTML.
 2. **Serving Static Files:** The server serves static files such as CSS, images,
    and JavaScript from the root directory, making them accessible in the
@@ -137,7 +137,7 @@ npm install express path body-parser pug
 node frontend.js
 ```
 
-3. Visit `http://localhost:3000` in your browser to view the home page.
+3. Visit `http://localhost:4000` in your browser to view the home page.
 
 ## Conclusion
 
