@@ -35,10 +35,7 @@
 		<p class="text-8xl font-bold drop-shadow-sm">Docs!</p>
 		<!-- <img class="rounded-lg drop-shadow-sm" src="/nod-of-approval.gif" /> -->
 	</Slide>
-</Presentation>
 
-
-<Presentation>
   <!-- Slide 1: Introduction -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-8xl font-bold drop-shadow-sm">Welcome to Our App!</p>
@@ -100,17 +97,7 @@
     <p class="text-6xl font-bold drop-shadow-sm">Conclusion</p>
     <p class="text-4xl mt-4 drop-shadow-sm">Our app provides a seamless, interactive experience with modern frontend animations, robust backend architecture, and containerized infrastructure.</p>
   </Slide>
-</Presentation>
 
-<script>
-  import { Presentation, Slide, Code, Action } from '@animotion/core'
-
-  let backendCode: ReturnType<typeof Code>
-  let frontendCode: ReturnType<typeof Code>
-  let dockerCode: ReturnType<typeof Code>
-</script>
-
-<Presentation>
   <!-- Slide 1: Backend Code - Routes Setup -->
   <Slide class="h-full place-content-center place-items-center">
     <p class="text-6xl font-bold drop-shadow-sm">Backend: Express Routes Setup</p>

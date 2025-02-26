@@ -13,9 +13,9 @@ RUN npm install
 # Copy the rest of the application files to /app in the container
 COPY . .
 
-# # Rebuild bcrypt and sqlite3 to ensure compatibility with the current environment
-RUN npm rebuild bcrypt --build-from-source
-RUN npm rebuild sqlite3 --build-from-source
+# # # Rebuild bcrypt and sqlite3 to ensure compatibility with the current environment
+# RUN npm rebuild bcrypt --build-from-source
+# RUN npm rebuild sqlite3 --build-from-source
 
 # Command to run the backend app
 CMD ["node", "backend.js"]

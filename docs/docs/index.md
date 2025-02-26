@@ -47,31 +47,29 @@ you'd like to contribute to our platform.
 We hope you have a great experience learning with us! Let's get started on your
 coding journey today! 🚀
 
-### First code snippet 
-fetch("http://localhost:5001/lessons")
-        .then((response) => response.json())
-        .then((data) => {
-          const lessonsContainer = document.getElementById(
-            "lessons-container",
-          );
+### First code snippet
 
-          data.forEach((lesson) => {
-            console.log(`lesson.title: ${lesson.title}`);
-            if (lesson.title === lessonTitel) {
-              const lessonElement = document.createElement("article");
-              lessonElement.classList.add("post");
-              lessonElement.innerHTML = `
-                                <header>
-                                    <div class="title">
-                                        <h2><a href="#">${lesson.title}</a></h2>
-                                        <p>${lesson.description}</p>
-                                    </div>
+fetch("http://localhost:5001/lessons") .then((response) => response.json())
+.then((data) => { const lessonsContainer = document.getElementById(
+"lessons-container", );
+
+    data.forEach((lesson) => {
+      console.log(`lesson.title: ${lesson.title}`);
+      if (lesson.title === lessonTitel) {
+        const lessonElement = document.createElement("article");
+        lessonElement.classList.add("post");
+        lessonElement.innerHTML = `
+                          <header>
+                              <div class="title">
+                                  <h2><a href="#">${lesson.title}</a></h2>
+                                  <p>${lesson.description}</p>
+                              </div>
 
 ### Second one
-require(["vs/editor/editor.main"], function () {
-    const editorContainer = document.getElementById("editor-container");
-    const languageSelector = document.getElementById("language-selector");
-    let editor;
+
+require(["vs/editor/editor.main"], function () { const editorContainer =
+document.getElementById("editor-container"); const languageSelector =
+document.getElementById("language-selector"); let editor;
 
     function createEditor(language) {
       editor = monaco.editor.create(editorContainer, {
