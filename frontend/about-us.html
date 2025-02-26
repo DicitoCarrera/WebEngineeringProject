@@ -117,7 +117,7 @@
       <!-- Actions -->
       <section>
         <ul class="actions stacked">
-          <li><a href="login.html" class="button large fit">Log In</a></li>
+          <li><a href="login.html" id="login-button" class="button large fit">Log In</a></li>
         </ul>
       </section>
     </section>
@@ -128,6 +128,19 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Authentication check
+        const isLoggedIn = localStorage.getItem("authToken") !== null;
+
+        const loginButton = document.getElementById("login-button");
+        if (isLoggedIn) {
+          loginButton.textContent = "Profile";
+          loginButton.href = "profile.html";
+        }
+      });
+    </script>
 
     <!-- Footer -->
     <section id="footer">

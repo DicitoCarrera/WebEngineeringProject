@@ -64,7 +64,7 @@
         <!-- Actions -->
         <section>
           <ul class="actions stacked">
-            <li><a href="login.html" class="button large fit">Log In</a></li>
+            <li><a href="login.html" id="login-button" class="button large fit">Log In</a></li>
           </ul>
         </section>
       </section>
@@ -158,6 +158,17 @@
             }
           });
         });
+
+      // Authentication check
+      document.addEventListener("DOMContentLoaded", function () {
+        const isLoggedIn = localStorage.getItem("authToken") !== null;
+
+        const loginButton = document.getElementById("login-button");
+        if (isLoggedIn) {
+          loginButton.textContent = "Profile";
+          loginButton.href = "profile.html";
+        }
+      });
     </script>
 
     <!-- Scripts -->

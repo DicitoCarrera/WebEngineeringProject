@@ -205,5 +205,18 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Authentication check
+        const isLoggedIn = localStorage.getItem("authToken") !== null;
+
+        const loginButton = document.getElementById("login-button");
+        if (isLoggedIn) {
+          loginButton.textContent = "Profile";
+          loginButton.href = "profile.html";
+        }
+      });
+    </script>
   </body>
 </html>
