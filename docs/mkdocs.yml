@@ -4,9 +4,7 @@ site_url: https://LearningProgramming.de/
 
 theme:
   language: en
-
   name: material
-
   palette:
 
     # Palette toggle for light mode
@@ -23,9 +21,9 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-  # font:
-  #   text: Merriweather Sans
-  #   code: Red Hat Mono
+  font:
+    text:  Fira Code
+    code:  Fira Code
 
   features:
     - navigation.footer
@@ -41,12 +39,10 @@ theme:
     - content.code.select
     - content.code.annotate
 
-  icon:
-    logo: fontawesome/solid/w
-
-  logo: assets/logo.png
-
-  favicon: assets/favicon.ico
+  # icon:
+  #   logo: fontawesome/solid/w
+  # logo: assets/logo.png
+  # favicon: assets/favicon.ico
 
 plugins:
   - search
